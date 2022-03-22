@@ -1,21 +1,12 @@
 import React from 'react'
 
-const Footer = ({
-  lightHoverColor,
-  darkHoverColor
-}: {
-  lightHoverColor: string
-  darkHoverColor: string
-}) => {
+const Footer = ({ hoverTextStyle }: { hoverTextStyle: string }) => {
   return (
     <div className="mx-5">
       <div className="flex flex-col mx-auto py-10 text-center text-sm font-light tracking-wide">
         <span>
           {new Date().getFullYear()} ·{' '}
-          <a
-            href="/tentaclesoft"
-            className={`font-semibold hover:${lightHoverColor} dark:hover:${darkHoverColor}`}
-          >
+          <a href="/tentaclesoft" className={`font-semibold ${hoverTextStyle}`}>
             Tentaclesoft
           </a>
           . All right reserved
