@@ -5,6 +5,7 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
 import '../styles/globals.css'
+import '../components/leveled/SteamLevels/levels.css'
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>
