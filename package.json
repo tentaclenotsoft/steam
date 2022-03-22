@@ -14,8 +14,10 @@
   "license": "BSD-4-Clause",
   "dependencies": {
     "next": "^12.1.0",
+    "next-themes": "^0.1.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-switch": "^6.0.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.22",
