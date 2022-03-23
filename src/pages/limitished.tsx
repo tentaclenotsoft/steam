@@ -110,7 +110,11 @@ const Limitished: NextPage = () => {
                       key={app.app_id}
                       className={
                         'grid grid-cols-7 ' +
-                        yn(app.removed, 'text-white bg-red-500', '')
+                        yn(
+                          app.removed,
+                          'text-white bg-red-500 hover:bg-red-400',
+                          'hover:bg-zinc-50/10'
+                        )
                       }
                     >
                       <div className="p-1">{app.app_id}</div>
