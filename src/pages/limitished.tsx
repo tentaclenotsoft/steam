@@ -14,12 +14,22 @@ import Request from '../utils/fetcher'
 const Limitished: NextPage = () => {
   const [apps, setApps] = useState([])
   const [appNamesList, setAppNamesList] = useState(null)
+  const [analyzing, setAnalyzing] = useState(false)
+  const [readyToCopyList, setReadyToCopyList] = useState(false)
+  const [appsInAnalyze, setAppsInAnalyze] = useState({ current: 0, total: 0 })
   const yn = (condition, yes, no) => (condition ? yes : no)
   const handleSubmit = async ({ app_ids }: { app_ids: string }) => {
     if (apps.length) setApps([])
+    if (readyToCopyList) setReadyToCopyList(false)
+
+    setAnalyzing(true)
+
+    const appIDs = app_ids.split(',')
+
+    setAppsInAnalyze({ current: 0, total: appIDs.length })
 
     const appsDetails = (await Promise.allSettled(
-      app_ids.split(',').map(
+      appIDs.map(
         (appID, index) =>
           new Promise((resolve, reject) =>
             setTimeout(
@@ -27,8 +37,8 @@ const Limitished: NextPage = () => {
                 Request(`/api/v1/limitished/details`, {
                   query: { app_id: appID }
                 }).then((app) => {
-                  console.log(app)
                   setApps((prevArray) => [...prevArray, app])
+                  setAppsInAnalyze({ current: index + 1, total: appIDs.length })
 
                   !app.removed &&
                   !app.is_free &&
@@ -43,6 +53,8 @@ const Limitished: NextPage = () => {
       )
     )) as IPromiseFulfilledResult<IAppDetails>[]
 
+    setAnalyzing(false)
+    setReadyToCopyList(true)
     setAppNamesList(
       appsDetails
         .filter(({ status }) => status === 'fulfilled')
@@ -65,8 +77,17 @@ const Limitished: NextPage = () => {
                   type="text"
                   placeholder="App IDs for analysis"
                 />
-                <button className="h-10 w-full font-semibold text-white bg-teal-600 hover:bg-teal-500">
-                  Analyze
+                <button
+                  className={`h-10 w-full font-semibold text-white ${
+                    !analyzing
+                      ? 'bg-teal-600 hover:bg-teal-500'
+                      : 'bg-teal-800 cursor-not-allowed'
+                  }`}
+                  disabled={analyzing}
+                >
+                  {!analyzing
+                    ? 'Analyze'
+                    : `Analyzing... (${appsInAnalyze.current} of ${appsInAnalyze.total})`}
                 </button>
               </div>
             </div>
@@ -128,8 +149,12 @@ const Limitished: NextPage = () => {
                 </div>
                 <CopyToClipboard text={appNamesList}>
                   <button
-                    className="w-full h-10 mt-3 font-semibold text-white bg-teal-600 hover:bg-teal-500"
-                    onClick={null}
+                    className={`w-full h-10 mt-3 font-semibold text-white ${
+                      readyToCopyList
+                        ? 'bg-teal-600 hover:bg-teal-500'
+                        : 'bg-teal-800 cursor-not-allowed'
+                    }`}
+                    disabled={!readyToCopyList}
                   >
                     Copy list
                   </button>
