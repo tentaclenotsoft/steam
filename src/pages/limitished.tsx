@@ -125,7 +125,11 @@ const Limitished: NextPage = () => {
                               ? `${SteamHTTP.STORE}/app/${app.app_id}`
                               : `https://steamdb.info/app/${app.app_id}`
                           }
-                          className={app.removed && 'italic'}
+                          className={
+                            !app.removed
+                              ? 'hover:text-teal-500'
+                              : 'italic hover:text-zinc-300'
+                          }
                           target="_blank"
                           rel="noreferrer"
                         >
