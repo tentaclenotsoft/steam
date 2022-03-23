@@ -9,6 +9,7 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Input from '../components/Input'
 import { IAppDetails, IPromiseFulfilledResult } from '../interfaces'
+import { SteamHTTP } from '../utils/Constants'
 import Request from '../utils/fetcher'
 
 const Limitished: NextPage = () => {
@@ -114,9 +115,15 @@ const Limitished: NextPage = () => {
                     >
                       <div className="p-1">{app.app_id}</div>
                       <div className="p-1 col-span-3">
-                        {app.name.length > 50
-                          ? app.name.slice(0, 50) + '...'
-                          : app.name}
+                        <a
+                          href={`${SteamHTTP.STORE}/app/${app.app_id}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {app.name.length > 50
+                            ? app.name.slice(0, 50) + '...'
+                            : app.name}
+                        </a>
                       </div>
                       <div
                         className={
