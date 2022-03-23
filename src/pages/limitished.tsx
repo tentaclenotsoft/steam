@@ -16,7 +16,9 @@ const Limitished: NextPage = () => {
   const [appNamesList, setAppNamesList] = useState(null)
   const yn = (condition, yes, no) => (condition ? yes : no)
   const handleSubmit = async ({ app_ids }: { app_ids: string }) => {
-    const apps = (await Promise.allSettled(
+    if (apps.length) setApps([])
+
+    const appsDetails = (await Promise.allSettled(
       app_ids.split(',').map(
         (appID, index) =>
           new Promise((resolve, reject) =>
@@ -42,7 +44,7 @@ const Limitished: NextPage = () => {
     )) as IPromiseFulfilledResult<IAppDetails>[]
 
     setAppNamesList(
-      apps
+      appsDetails
         .filter(({ status }) => status === 'fulfilled')
         .map(({ value }) => value)
         .join('\n')
