@@ -124,7 +124,7 @@ const Limitished: NextPage = () => {
                           target="_blank"
                           rel="noreferrer"
                         >
-                          {app.name.length > 50
+                          {app.name?.length > 50
                             ? app.name.slice(0, 50) + '...'
                             : app.name}
                         </a>
