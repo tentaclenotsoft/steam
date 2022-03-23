@@ -113,7 +113,11 @@ const Limitished: NextPage = () => {
                       }
                     >
                       <div className="p-1">{app.app_id}</div>
-                      <div className="p-1 col-span-3">{app.name}</div>
+                      <div className="p-1 col-span-3">
+                        {app.name.length > 50
+                          ? app.name.slice(0, 50) + '...'
+                          : app.name}
+                      </div>
                       <div
                         className={
                           'p-1 text-center ' +
