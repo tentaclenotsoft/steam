@@ -120,13 +120,20 @@ const Limitished: NextPage = () => {
                       <div className="p-1">{app.app_id}</div>
                       <div className="p-1 col-span-3">
                         <a
-                          href={`${SteamHTTP.STORE}/app/${app.app_id}`}
+                          href={
+                            !app.removed
+                              ? `${SteamHTTP.STORE}/app/${app.app_id}`
+                              : `https://steamdb.info/app/${app.app_id}`
+                          }
+                          className={app.removed && 'italic'}
                           target="_blank"
                           rel="noreferrer"
                         >
-                          {app.name?.length > 50
-                            ? app.name.slice(0, 50) + '...'
-                            : app.name}
+                          {!app.removed
+                            ? app.name?.length > 50
+                              ? app.name.slice(0, 50) + '...'
+                              : app.name
+                            : '[App removed]'}
                         </a>
                       </div>
                       <div
