@@ -112,7 +112,7 @@ const Limitished: NextPage = () => {
                         'grid grid-cols-7 ' +
                         yn(
                           app.removed,
-                          'text-white bg-red-500 hover:bg-red-400',
+                          'text-white bg-red-500',
                           'hover:bg-zinc-50/10'
                         )
                       }
