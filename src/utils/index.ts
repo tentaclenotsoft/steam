@@ -1,3 +1,50 @@
+import { load } from 'cheerio'
+
+import { SteamHTTP } from './Constants'
+import Request from './fetcher'
+
+const getAppDetails = (appID: number) =>
+  Request(`${SteamHTTP.API}/appdetails`, {
+    query: { appids: appID }
+  }).then((data) => {
+    const success = data[appID].success
+    const appDetails = data[appID].data
+    const app = {
+      app_id: appID,
+      name: appDetails?.name,
+      removed: !success,
+      is_free: appDetails?.is_free,
+      is_dlc_or_soundtrack: /dlc|music/.test(appDetails?.type)
+    }
+
+    return app
+  })
+
+const getAppProfileFeaturesLimited = (appID: number) =>
+  Request(`${SteamHTTP.STORE}/app/${appID}`, {
+    options: {
+      headers: { Cookie: 'Steam_Language=english; birthtime=-2211651935;' }
+    }
+  }).then((body) => {
+    const $ = load(body)
+    const categories = []
+
+    $('.game_area_details_specs_ctn > .label').each(function () {
+      categories.push($(this).html())
+    })
+
+    const app = {
+      app_id: appID,
+      has_profile_features_limited: !!categories.find(
+        (category) =>
+          category.startsWith('Profile Features Limited') ||
+          category.startsWith('Steam is learning about this game')
+      )
+    }
+
+    return app
+  })
+
 const levelToClasses = (level: number) => {
   const subnum = (number: number, from: number, length: number) =>
     String(number).substr(from, length)
@@ -78,6 +125,8 @@ const totalXPFromLevel = (level: number) => {
 }
 
 export {
+  getAppDetails,
+  getAppProfileFeaturesLimited,
   levelToClasses,
   numberFormatter,
   requiredXPFromLevel,
