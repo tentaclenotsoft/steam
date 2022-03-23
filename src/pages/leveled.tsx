@@ -63,7 +63,7 @@ const Leveled: NextPage = () => {
   const [leveledData, setLeveledData] = useState<ILeveled>({} as ILeveled)
   const handleSubmit = (data: { [key: string]: string }) =>
     fetch(
-      `/api/level?${QS.stringify({
+      `/api/v1/leveled/level?${QS.stringify({
         key: leveledSettings?.steam_api_key,
         steam_id: leveledSettings?.steam_id,
         ...data
