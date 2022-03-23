@@ -113,7 +113,7 @@ const Limitished: NextPage = () => {
                         yn(
                           app.removed,
                           'text-white bg-red-500',
-                          'hover:bg-zinc-50/10'
+                          'hover:bg-zinc-300/50 dark:hover:bg-zinc-50/10'
                         )
                       }
                     >
