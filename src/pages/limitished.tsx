@@ -97,14 +97,14 @@ const Limitished: NextPage = () => {
           <div className="flex justify-center">
             <div className="px-5 py-4 bg-zinc-100 dark:bg-zinc-700">
               <div>
-                <div className="mx-auto pr-4 grid grid-cols-7 text-center text-lg bg-zinc-300 dark:bg-zinc-800/25 divide-x divide-zinc-100 dark:divide-zinc-600">
+                <div className="mx-auto pr-4 grid grid-cols-7 text-center text-lg bg-zinc-300 dark:bg-zinc-800/25 divide-x divide-zinc-100 dark:divide-zinc-600 border-b border-zinc-100 dark:border-zinc-600">
                   <div>ID</div>
                   <div className="col-span-3">App</div>
                   <div>Free</div>
                   <div>Limited</div>
                   <div className="px-2">DLC/Soundtrack</div>
                 </div>
-                <div className="h-80 mx-auto py-2 bg-zinc-200 dark:bg-zinc-600 overflow-y-scroll text-base">
+                <div className="h-80 mx-auto bg-zinc-200 dark:bg-zinc-600 overflow-y-scroll text-base">
                   {apps?.map((app) => (
                     <div
                       key={app.app_id}
