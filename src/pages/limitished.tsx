@@ -81,8 +81,8 @@ const Limitished: NextPage = () => {
                 <button
                   className={`h-10 w-full font-semibold text-white ${
                     !analyzing
-                      ? 'bg-teal-600 hover:bg-teal-500'
-                      : 'bg-teal-800 cursor-not-allowed'
+                      ? 'bg-sky-600 hover:bg-sky-500'
+                      : 'bg-sky-800 cursor-not-allowed'
                   }`}
                   disabled={analyzing}
                 >
@@ -127,7 +127,7 @@ const Limitished: NextPage = () => {
                           }
                           className={
                             !app.removed
-                              ? 'hover:text-teal-500'
+                              ? 'hover:text-sky-500'
                               : 'italic hover:text-zinc-300'
                           }
                           target="_blank"
@@ -177,8 +177,8 @@ const Limitished: NextPage = () => {
                   <button
                     className={`w-full h-10 mt-3 font-semibold text-white ${
                       readyToCopyList
-                        ? 'bg-teal-600 hover:bg-teal-500'
-                        : 'bg-teal-800 cursor-not-allowed'
+                        ? 'bg-sky-600 hover:bg-sky-500'
+                        : 'bg-sky-800 cursor-not-allowed'
                     }`}
                     disabled={!readyToCopyList}
                   >
@@ -190,7 +190,7 @@ const Limitished: NextPage = () => {
           </div>
         </div>
       </div>
-      <Footer hoverTextStyle="hover:text-teal-600 dark:hover:text-teal-500" />
+      <Footer hoverTextStyle="hover:text-sky-600 dark:hover:text-sky-500" />
     </div>
   )
 }
