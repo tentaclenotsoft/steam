@@ -82,7 +82,7 @@ const Limitished: NextPage = () => {
                   className={`h-10 w-full font-semibold text-white ${
                     !analyzing
                       ? 'bg-sky-600 hover:bg-sky-500'
-                      : 'bg-sky-800 cursor-not-allowed'
+                      : 'bg-sky-600/50 cursor-not-allowed'
                   }`}
                   disabled={analyzing}
                 >
@@ -178,7 +178,7 @@ const Limitished: NextPage = () => {
                     className={`w-full h-10 mt-3 font-semibold text-white ${
                       readyToCopyList
                         ? 'bg-sky-600 hover:bg-sky-500'
-                        : 'bg-sky-800 cursor-not-allowed'
+                        : 'bg-sky-600/50 cursor-not-allowed'
                     }`}
                     disabled={!readyToCopyList}
                   >
