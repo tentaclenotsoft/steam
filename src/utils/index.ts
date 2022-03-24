@@ -23,7 +23,10 @@ const getAppDetails = (appID: number) =>
 const getAppProfileFeaturesLimited = (appID: number) =>
   Request(`${SteamHTTP.STORE}/app/${appID}`, {
     options: {
-      headers: { Cookie: 'Steam_Language=english; birthtime=-2211651935;' }
+      headers: {
+        Cookie:
+          'Steam_Language=english; birthtime=-2211651935; wants_mature_content=1;'
+      }
     }
   }).then((body) => {
     const $ = load(body)
