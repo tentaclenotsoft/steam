@@ -3,7 +3,6 @@ import React, { EffectCallback, useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 
 import { Form } from '@unform/web'
-import QS from 'querystring'
 import useLocalStorage from 'use-local-storage'
 
 import Footer from '../components/Footer'
@@ -11,6 +10,7 @@ import Header from '../components/Header'
 import Input from '../components/Input'
 import SteamLevels from '../components/leveled/SteamLevels'
 import { numberFormatter } from '../utils'
+import Request from '../utils/fetcher'
 
 interface LeveledSettings {
   steam_api_key: string
@@ -62,13 +62,13 @@ const Leveled: NextPage = () => {
 
   const [leveledData, setLeveledData] = useState<ILeveled>({} as ILeveled)
   const handleSubmit = (data: { [key: string]: string }) =>
-    fetch(
-      `/api/v1/leveled/level?${QS.stringify({
+    Request('/api/v1/leveled/level', {
+      query: {
         key: leveledSettings?.steam_api_key,
         steam_id: leveledSettings?.steam_id,
         ...data
-      })}`
-    ).then(async (response) => setLeveledData(await response.json()))
+      }
+    }).then((data) => setLeveledData(data))
 
   return (
     <div className="h-screen flex flex-col justify-between">
