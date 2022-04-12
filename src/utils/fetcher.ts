@@ -10,16 +10,16 @@ const buildQuery = (object) =>
         .join('&')
     : ''
 
+const parseResponse = (response) =>
+  response.headers.get('Content-Type').startsWith('application/json')
+    ? response.json()
+    : response.text()
+
 export default (
   url: string,
   { query, options }: IFetcherOptions = { query: {}, options: {} }
 ) =>
   fetch(`${url}?${buildQuery(query)}`, options)
-    .then((response) =>
-      !response.ok ? Promise.reject(response.statusText) : response
-    )
-    .then((response) =>
-      response.headers.get('Content-Type').startsWith('application/json')
-        ? response.json()
-        : response.text()
-    )
+    .then((response) => (!response.ok ? Promise.reject(response) : response))
+    .then((response) => parseResponse(response))
+    .catch((response) => parseResponse(response))
