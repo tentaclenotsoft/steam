@@ -93,7 +93,7 @@ const Leveled: NextPage = () => {
                     </a>
                   </div>
                   <input
-                    className={`w-full lg:w-96 h-8 px-2 text-zinc-600/90 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-600/75 outline-none ${inputOutline}`}
+                    className={`w-full lg:w-80 h-8 px-2 text-zinc-600/90 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-600/75 outline-none ${inputOutline}`}
                     type={inputType}
                     placeholder="Your key (stored in your browser only)"
                     autoComplete="off"
@@ -118,7 +118,7 @@ const Leveled: NextPage = () => {
                 <div className="flex flex-col">
                   <label className="mb-1">SteamID</label>
                   <input
-                    className="w-full lg:w-96 h-8 px-2 text-zinc-600/90 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-600/75 outline-none"
+                    className="w-full lg:w-80 h-8 px-2 text-zinc-600/90 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-600/75 outline-none"
                     type="text"
                     placeholder="Your SteamID"
                     onChange={(event) =>
@@ -164,44 +164,50 @@ const Leveled: NextPage = () => {
                 </div>
               </Form>
             </div>
-            <div className="w-full flex flex-col px-5 py-4 border border-zinc-400/20 dark:border-zinc-800/20 bg-zinc-100 dark:bg-zinc-700">
-              <div className="h-16 flex justify-between items-center mx-4 sm:mx-16">
-                <SteamLevels level={leveledData?.level} />
+            <div className="w-full flex flex-col px-5 py-4 border border-zinc-400/20 dark:border-zinc-800/20 bg-zinc-100 dark:bg-zinc-700 space-y-5">
+              <div className="h-16 flex justify-between items-center mx-4 sm:mx-10">
+                <div className="scale-125">
+                  <SteamLevels level={leveledData?.level} />
+                </div>
                 <div className="flex flex-col items-center text-center font-light -space-y-1">
                   <span className="text-zinc-400 text-xs">XP needed</span>
-                  <span className="text-xl">
+                  <span className="text-2xl">
                     {numberFormatter(leveledData.xp_needed || 0)}
                   </span>
                 </div>
-                <SteamLevels level={leveledData?.dream_level} />
-              </div>
-              <div className="h-full flex flex-col justify-center space-y-4 mx-8 md:mx-20 lg:mx-32">
-                <div className="w-full flex justify-between">
-                  <div className="flex flex-col items-center text-center font-light -space-y-1">
-                    <span className="text-zinc-400 text-sm">Sets needed</span>
-                    <span>{numberFormatter(leveledData.sets_needed || 0)}</span>
-                  </div>
-                  <div className="flex flex-col items-center text-center font-light -space-y-1">
-                    <span className="text-zinc-400 text-sm">Keys needed</span>
-                    <span>
-                      {numberFormatter(
-                        +leveledData.keys_needed?.toFixed(1) || 0
-                      )}
-                    </span>
-                  </div>
+                <div className="scale-125">
+                  <SteamLevels level={leveledData?.dream_level} />
                 </div>
-                <div className="flex flex-col items-center text-center font-light -space-y-1">
+              </div>
+              <div className="h-full grid grid-cols-2">
+                <div className="flex flex-col m-auto items-center text-center">
+                  <span className="text-zinc-400 text-sm">Sets needed</span>
+                  <span className="text-xl">
+                    {numberFormatter(leveledData.sets_needed || 0)}
+                  </span>
+                </div>
+                <div className="flex flex-col m-auto items-center text-center">
+                  <span className="text-zinc-400 text-sm">Keys needed</span>
+                  <span className="text-xl">
+                    {numberFormatter(+leveledData.keys_needed?.toFixed(1) || 0)}
+                  </span>
+                </div>
+                <div className="flex flex-col m-auto items-center text-center col-span-2">
                   <span className="text-zinc-400 text-sm">
                     Emoticons & Background
                   </span>
-                  {numberFormatter(leveledData.emoticons_and_backgrounds || 0)}
+                  <span className="text-xl">
+                    {numberFormatter(
+                      leveledData.emoticons_and_backgrounds || 0
+                    )}
+                  </span>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Footer hoverTextStyle='hover:text-indigo-600 dark:hover:text-indigo-500' />
+      <Footer hoverTextStyle="hover:text-indigo-600 dark:hover:text-indigo-500" />
     </div>
   )
 }
