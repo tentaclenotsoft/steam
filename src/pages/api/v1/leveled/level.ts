@@ -66,6 +66,7 @@ const Level = ({
         xp_needed: setsNeeded * 100,
         keys_needed: setsNeeded / rate,
         emoticons_and_backgrounds: setsNeeded * 2,
+        coupons: setsNeeded
       }
     })
     .catch(async (response) => {

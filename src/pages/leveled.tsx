@@ -28,6 +28,7 @@ interface ILeveled {
   xp_needed: number
   keys_needed: number
   emoticons_and_backgrounds: number
+  coupons: number
 }
 
 const Leveled: NextPage = () => {
@@ -179,7 +180,7 @@ const Leveled: NextPage = () => {
                   <SteamLevels level={leveledData?.dream_level} />
                 </div>
               </div>
-              <div className="h-full grid grid-cols-2">
+              <div className="h-full grid grid-cols-2 sm:grid-cols-3">
                 <div className="flex flex-col m-auto items-center text-center">
                   <span className="text-zinc-400 text-sm">Sets needed</span>
                   <span className="text-xl">
@@ -192,7 +193,13 @@ const Leveled: NextPage = () => {
                     {numberFormatter(+leveledData.keys_needed?.toFixed(1) || 0)}
                   </span>
                 </div>
-                <div className="flex flex-col m-auto items-center text-center col-span-2">
+                <div className="flex flex-col m-auto items-center text-center">
+                  <span className="text-zinc-400 text-sm">Coupons</span>
+                  <span className="text-xl">
+                    {numberFormatter(+leveledData.coupons || 0)}
+                  </span>
+                </div>
+                <div className="flex flex-col m-auto items-center text-center sm:col-span-3">
                   <span className="text-zinc-400 text-sm">
                     Emoticons & Background
                   </span>
