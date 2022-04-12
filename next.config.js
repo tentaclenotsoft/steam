@@ -5,7 +5,7 @@ module.exports = {
     return [
       {
         source: '/tentaclesoft',
-        destination: 'https://github.com/tentaclenotsoft',
+        destination: 'https://tentaclesoft.com',
         permanent: true
       }
     ]
