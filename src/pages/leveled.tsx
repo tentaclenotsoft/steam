@@ -27,8 +27,7 @@ interface ILeveled {
   sets_needed: number
   xp_needed: number
   keys_needed: number
-  emoticons: number
-  backgrounds: number
+  emoticons_and_backgrounds: number
 }
 
 const Leveled: NextPage = () => {
@@ -193,13 +192,9 @@ const Leveled: NextPage = () => {
                 </div>
                 <div className="flex flex-col items-center text-center font-light -space-y-1">
                   <span className="text-zinc-400 text-sm">
-                    Emoticons and Background
+                    Emoticons & Background
                   </span>
-                  <span>
-                    {numberFormatter(leveledData.emoticons || 0)}
-                    <span className="text-zinc-500"> / </span>
-                    {numberFormatter(leveledData.backgrounds || 0)}
-                  </span>
+                  {numberFormatter(leveledData.emoticons_and_backgrounds || 0)}
                 </div>
               </div>
             </div>
