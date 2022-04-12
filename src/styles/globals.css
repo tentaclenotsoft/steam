@@ -111,4 +111,9 @@
 
 @tailwind base;
 @tailwind components;
+
+.bg-topography {
+  background-image: url('/images/svg/topography.svg');
+}
+
 @tailwind utilities;

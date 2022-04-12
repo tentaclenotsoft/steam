@@ -9,7 +9,7 @@ const MyDocument = class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
         </Head>
-        <body className="bg-gradient-to-b from-zinc-300 via-zinc-200 to-white text-zinc-800 dark:from-zinc-900 dark:via-zinc-800 dark:to-zinc-700 dark:text-zinc-50 font-proxima-nova">
+        <body className="text-zinc-800 dark:text-zinc-50 bg-zinc-300 dark:bg-zinc-900 bg-topography font-proxima-nova">
           <Main />
           <NextScript />
         </body>
