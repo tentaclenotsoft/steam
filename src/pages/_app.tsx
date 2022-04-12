@@ -1,4 +1,5 @@
 import React from 'react'
+import { ToastContainer } from 'react-toastify'
 
 import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'
@@ -6,6 +7,7 @@ import Head from 'next/head'
 
 import '../styles/globals.css'
 import '../components/leveled/SteamLevels/levels.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>
@@ -14,6 +16,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
     </Head>
     <ThemeProvider attribute="class" enableSystem={false}>
       <Component {...pageProps} />
+      <ToastContainer />
     </ThemeProvider>
   </>
 )

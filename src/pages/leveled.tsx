@@ -1,4 +1,5 @@
 import React, { EffectCallback, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 import type { NextPage } from 'next'
 
@@ -68,7 +69,16 @@ const Leveled: NextPage = () => {
         steam_id: leveledSettings?.steam_id,
         ...data
       }
-    }).then((data) => setLeveledData(data))
+    }).then((data) => {
+      if (data.message) {
+        toast.error(data.message, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 4000
+        })
+      }
+
+      setLeveledData(data)
+    })
 
   return (
     <div className="h-screen flex flex-col justify-between">
