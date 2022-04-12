@@ -20,7 +20,7 @@ const SwitchTheme = () => {
       checked={!isMounted || theme === 'dark'}
       onChange={switchTheme}
       offColor="#e4e4e7"
-      onColor="#3f3f46"
+      onColor="#52525b"
       handleDiameter={10}
       uncheckedIcon={false}
       checkedIcon={false}
