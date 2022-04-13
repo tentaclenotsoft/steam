@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
-  async redirects () {
+  images: {
+    domains: [
+      'avatars.akamai.steamstatic.com',
+      'avatars.cloudflare.steamstatic.com'
+    ]
+  },
+  async redirects() {
     return [
       {
         source: '/tentaclesoft',

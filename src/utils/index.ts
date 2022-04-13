@@ -1,4 +1,5 @@
 import { load } from 'cheerio'
+import SteamID from 'steamid'
 
 import { SteamHTTP } from './Constants'
 import Request from './fetcher'
@@ -71,6 +72,28 @@ const levelToClasses = (level: number) => {
 
 const numberFormatter = (value: number) => new Intl.NumberFormat().format(value)
 
+const parseSteamProfileURL = (value: string) => {
+  const valueMatch = value.match(
+    /(?:https?:\/\/)?steamcommunity\.com\/((?:profiles|id)\/[a-zA-Z0-9]+)/
+  )
+  const valueParsed = Array.isArray(valueMatch) ? valueMatch[1] : value
+
+  if (
+    valueParsed.startsWith('STEAM_') ||
+    valueParsed.startsWith('765') ||
+    valueParsed.startsWith('[U:')
+  ) {
+    const steamID = new SteamID(valueParsed)
+
+    return steamID.isValid() ? `profiles/${steamID.toString()}` : null
+  } else {
+    return !valueParsed.startsWith('id/') &&
+      !valueParsed.startsWith('profiles/')
+      ? `id/${valueParsed}`
+      : valueParsed
+  }
+}
+
 const requiredXPFromLevel = (level: number) => {
   if (level <= 10) {
     return 100
@@ -132,6 +155,7 @@ export {
   getAppProfileFeaturesLimited,
   levelToClasses,
   numberFormatter,
+  parseSteamProfileURL,
   requiredXPFromLevel,
   totalXPFromLevel
 }
