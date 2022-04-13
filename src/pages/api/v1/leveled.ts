@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import QS from 'querystring'
 import SteamID from 'steamid'
 
-import { totalXPFromLevel } from '../../../../utils'
+import { totalXPFromLevel } from '../../../utils'
 
 interface LevelOptions {
   key: string

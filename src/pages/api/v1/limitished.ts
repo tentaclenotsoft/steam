@@ -5,8 +5,8 @@ import {
   IAppDetailsResponse,
   IAppProfileFeaturesLimitedResponse,
   IPromiseFulfilledResult
-} from '../../../../interfaces'
-import { getAppDetails, getAppProfileFeaturesLimited } from '../../../../utils'
+} from '../../../interfaces'
+import { getAppDetails, getAppProfileFeaturesLimited } from '../../../utils'
 
 const App = async (appID: number) => {
   try {

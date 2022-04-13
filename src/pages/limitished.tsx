@@ -35,7 +35,7 @@ const Limitished: NextPage = () => {
           new Promise((resolve, reject) =>
             setTimeout(
               () =>
-                Request(`/api/v1/limitished/details`, {
+                Request('/api/v1/limitished', {
                   query: { app_id: appID }
                 }).then((app) => {
                   setApps((prevArray) => [...prevArray, app])
