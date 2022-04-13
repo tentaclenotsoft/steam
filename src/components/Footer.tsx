@@ -1,5 +1,7 @@
 import React from 'react'
 
+import KofiButton from 'kofi-button'
+
 const Footer = ({ hoverTextStyle }: { hoverTextStyle: string }) => {
   return (
     <div className="bg-gradient-to-t from-zinc-100 dark:from-zinc-700 to-transparent">
@@ -19,6 +21,13 @@ const Footer = ({ hoverTextStyle }: { hoverTextStyle: string }) => {
             This site is not affiliated with Valve, Steam, or any of their
             partners.
           </span>
+          <div className="mt-3">
+            <KofiButton
+              title="Buy me a coffee!"
+              color="rgb(153, 153, 153, 0.3)"
+              kofiID="I2I0BJLVQ"
+            />
+          </div>
         </div>
       </div>
     </div>
