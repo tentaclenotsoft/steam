@@ -181,7 +181,7 @@ const Identified: NextPage = () => {
           </div>
         </div>
       </div>
-      <Footer hoverTextStyle="hover:text-sky-600 dark:hover:text-sky-500" />
+      <Footer hoverTextStyle="hover:text-red-600 dark:hover:text-red-500" />
     </div>
   )
 }
