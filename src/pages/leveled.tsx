@@ -10,36 +10,18 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Input from '../components/Input'
 import SteamLevels from '../components/leveled/SteamLevels'
+import { ILeveledResponse, ILeveledSettings } from '../interfaces'
 import { numberFormatter } from '../utils'
 import Request from '../utils/fetcher'
-
-interface LeveledSettings {
-  steam_api_key: string
-  steam_id: string
-}
-
-interface ILeveled {
-  xp: number
-  level: number
-  xp_needed_to_level_up: number
-  sets_needed_to_level_up: number
-  keys_needed_to_level_up: number
-  dream_level: number
-  sets_needed: number
-  xp_needed: number
-  keys_needed: number
-  emoticons_and_backgrounds: number
-  coupons: number
-}
 
 const Leveled: NextPage = () => {
   const [leveledSettings, setLeveledSettings] = useLocalStorage(
     'leveled/settings',
-    {} as LeveledSettings
+    {} as ILeveledSettings
   )
   const mergeLeveledSettings = (object: {
     [key: string]: string
-  }): LeveledSettings => Object.assign({}, leveledSettings, object)
+  }): ILeveledSettings => Object.assign({}, leveledSettings, object)
   const [inputType, setInputType] = useState('')
   const [inputOutline, setInputOutline] = useState('')
   const useMountEffect = (effect: EffectCallback) => useEffect(effect, [])
@@ -61,7 +43,9 @@ const Leveled: NextPage = () => {
     )
   )
 
-  const [leveledData, setLeveledData] = useState<ILeveled>({} as ILeveled)
+  const [leveledData, setLeveledData] = useState<ILeveledResponse>(
+    {} as ILeveledResponse
+  )
   const handleSubmit = (data: { [key: string]: string }) =>
     Request('/api/v1/leveled', {
       query: {

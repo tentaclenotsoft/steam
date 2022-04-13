@@ -3,23 +3,16 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import QS from 'querystring'
 import SteamID from 'steamid'
 
+import { ILeveledOptions } from '../../../interfaces'
 import { totalXPFromLevel } from '../../../utils'
 
-interface LevelOptions {
-  key: string
-  steam_id: string
-  dream_level: number
-  rate: number
-  max_level: number
-}
-
-const Level = ({
+const Leveled = ({
   key,
   steam_id,
   dream_level: dreamLevel,
   rate,
   max_level: maxLevel
-}: LevelOptions) => {
+}: ILeveledOptions) => {
   if (!key) throw new Error('Provide a valid steam API key')
   if (dreamLevel > maxLevel) {
     throw new RangeError(
@@ -88,13 +81,13 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
     case 'GET':
       try {
         response.status(200).json(
-          await Level({
+          await Leveled({
             key,
             steam_id,
             dream_level: +dream_level,
             rate: +rate,
             max_level: 5299
-          } as LevelOptions)
+          } as ILeveledOptions)
         )
       } catch (error) {
         const { message } = error as Error
