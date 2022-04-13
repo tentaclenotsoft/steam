@@ -109,7 +109,7 @@ const Identified: NextPage = () => {
                       <span>VAC</span>
                       {userData.limitations?.vac ? (
                         <RiCheckboxLine
-                          color="rgb(220 38 38)"
+                          color="rgb(220, 38, 38)"
                           size={checkboxIconSize}
                         />
                       ) : (
@@ -120,7 +120,7 @@ const Identified: NextPage = () => {
                       <span>Trade Ban</span>
                       {userData.limitations?.trade_ban ? (
                         <RiCheckboxLine
-                          color="rgb(220 38 38)"
+                          color="rgb(220, 38, 38)"
                           size={checkboxIconSize}
                         />
                       ) : (
@@ -131,7 +131,7 @@ const Identified: NextPage = () => {
                       <span>Limited</span>
                       {userData.limitations?.limited ? (
                         <RiCheckboxLine
-                          color="rgb(220 38 38)"
+                          color="rgb(220, 38, 38)"
                           size={checkboxIconSize}
                         />
                       ) : (
