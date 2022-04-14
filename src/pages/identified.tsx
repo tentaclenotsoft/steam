@@ -36,7 +36,7 @@ const Identified: NextPage = () => {
   return (
     <div className="h-screen flex flex-col justify-between">
       <Header title="Steam Identified" />
-      <div className="m-auto">
+      <div className="mx-5 sm:m-auto">
         <div className="space-y-3">
           <div className="p-5 bg-zinc-100 dark:bg-zinc-700 drop-shadow-md">
             <Form onSubmit={handleSubmit}>
@@ -173,7 +173,7 @@ const Identified: NextPage = () => {
                     <span className="text-zinc-500/80 dark:text-zinc-300/75">
                       {label}
                     </span>
-                    <div className="h-8 p-1 bg-zinc-300 dark:bg-zinc-800/40">
+                    <div className="h-max min-h-[2rem] p-1 bg-zinc-300 dark:bg-zinc-800/40 break-all">
                       <span>{value}</span>
                     </div>
                   </div>
