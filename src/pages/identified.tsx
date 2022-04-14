@@ -62,15 +62,17 @@ const Identified: NextPage = () => {
               </span>
             </div>
             <div className="p-5 space-y-2 bg-zinc-100 dark:bg-zinc-700">
-              <div className="flex flex-col sm:flex-row justify-center space-y-3 sm:space-x-3">
-                <Image
-                  src={
-                    userData.avatar_url?.full ||
-                    '/images/jpg/default_avatar.jpg'
-                  }
-                  width={388}
-                  height={368}
-                />
+              <div className="flex flex-col sm:flex-row justify-center space-x-0 sm:space-x-3 space-y-3 sm:space-y-0">
+                <div className="flex justify-center">
+                  <Image
+                    src={
+                      userData.avatar_url?.full ||
+                      '/images/jpg/default_avatar.jpg'
+                    }
+                    width={385}
+                    height={385}
+                  />
+                </div>
                 <div className="w-full grid grid-cols-2 gap-2">
                   <div className="flex flex-col">
                     <label className="text-zinc-500/80 dark:text-zinc-300/75">
