@@ -2,7 +2,7 @@ import { load } from 'cheerio'
 import SteamID from 'steamid'
 
 import { SteamHTTP } from './Constants'
-import Request from './fetcher'
+import Request from './Fetcher'
 
 const getAppDetails = (appID: number) =>
   Request(`${SteamHTTP.API}/appdetails`, {

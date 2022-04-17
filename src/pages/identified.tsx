@@ -12,7 +12,7 @@ import Header from '../components/Header'
 import Input from '../components/Input'
 import { IUserData } from '../interfaces'
 import { SteamHTTP } from '../utils/Constants'
-import Request from '../utils/fetcher'
+import Request from '../utils/Fetcher'
 
 const Identified: NextPage = () => {
   const checkboxIconSize = 24

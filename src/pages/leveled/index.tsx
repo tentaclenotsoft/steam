@@ -12,7 +12,7 @@ import Input from '../../components/Input'
 import SteamLevels from '../../components/leveled/SteamLevels'
 import { ILeveledResponse, ILeveledSettings } from '../../interfaces'
 import { numberFormatter } from '../../utils'
-import Request from '../../utils/fetcher'
+import Request from '../../utils/Fetcher'
 
 const Leveled: NextPage = () => {
   const [leveledSettings, setLeveledSettings] = useLocalStorage(

@@ -10,7 +10,7 @@ import Header from '../components/Header'
 import Input from '../components/Input'
 import { IAppDetails, IPromiseFulfilledResult } from '../interfaces'
 import { SteamHTTP } from '../utils/Constants'
-import Request from '../utils/fetcher'
+import Request from '../utils/Fetcher'
 
 const Limitished: NextPage = () => {
   const [apps, setApps] = useState([])
