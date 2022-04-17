@@ -11,7 +11,7 @@ import Header from '../../components/Header'
 import Input from '../../components/Input'
 import SteamLevels from '../../components/leveled/SteamLevels'
 import { ILeveledResponse, ILeveledSettings } from '../../interfaces'
-import { numberFormatter } from '../../utils'
+import { createApiRoute, numberFormatter } from '../../utils'
 import Request from '../../utils/Fetcher'
 
 const Leveled: NextPage = () => {
@@ -47,7 +47,7 @@ const Leveled: NextPage = () => {
     {} as ILeveledResponse
   )
   const handleSubmit = (data: { [key: string]: string }) =>
-    Request('/api/v1/leveled', {
+    Request(createApiRoute('/leveled'), {
       query: {
         key: leveledSettings?.steam_api_key,
         steam_id: leveledSettings?.steam_id,

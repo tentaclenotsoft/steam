@@ -9,6 +9,7 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Input from '../components/Input'
 import { IAppDetails, IPromiseFulfilledResult } from '../interfaces'
+import { createApiRoute } from '../utils'
 import { SteamHTTP } from '../utils/Constants'
 import Request from '../utils/Fetcher'
 
@@ -35,7 +36,7 @@ const Limitished: NextPage = () => {
           new Promise((resolve, reject) =>
             setTimeout(
               () =>
-                Request('/api/v1/limitished', {
+                Request(createApiRoute('/limitished'), {
                   query: { app_id: appID }
                 }).then((app) => {
                   setApps((prevArray) => [...prevArray, app])

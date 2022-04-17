@@ -4,6 +4,9 @@ import SteamID from 'steamid'
 import { SteamHTTP } from './Constants'
 import Request from './Fetcher'
 
+const createApiRoute = (path: string, version = 1) =>
+  `/api/v${version}${!path.startsWith('/') ? '/' + path : path}`
+
 const getAppDetails = (appID: number) =>
   Request(`${SteamHTTP.API}/appdetails`, {
     query: { appids: appID }
@@ -151,6 +154,7 @@ const totalXPFromLevel = (level: number) => {
 }
 
 export {
+  createApiRoute,
   getAppDetails,
   getAppProfileFeaturesLimited,
   levelToClasses,

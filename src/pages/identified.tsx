@@ -11,6 +11,7 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Input from '../components/Input'
 import { IUserData } from '../interfaces'
+import { createApiRoute } from '../utils'
 import { SteamHTTP } from '../utils/Constants'
 import Request from '../utils/Fetcher'
 
@@ -18,7 +19,7 @@ const Identified: NextPage = () => {
   const checkboxIconSize = 24
   const [userData, setUserData] = useState({} as IUserData)
   const handleSubmit = (data: { [key: string]: string }) =>
-    Request('/api/v1/identified', {
+    Request(createApiRoute('/identified'), {
       query: {
         value: data.user
       }
