@@ -86,7 +86,7 @@ const Table: NextPage = () => {
       </div>
       {showButton && (
         <button
-          className="fixed right-5 bottom-5 p-1 bg-zinc-100 dark:bg-zinc-700 hover:bg-zinc-200 hover:dark:bg-zinc-600 drop-shadow-md"
+          className="fixed right-5 bottom-5 p-1 bg-indigo-600 hover:bg-indigo-500 drop-shadow-md"
           onClick={scrollToTop}
         >
           <BiUpArrowAlt size={30} />
