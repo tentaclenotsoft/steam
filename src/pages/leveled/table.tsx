@@ -29,8 +29,9 @@ const Table: NextPage = () => {
                 <div className="grid grid-cols-2 md:grid-cols-5 xl:grid-cols-10 ml-8 py-3 xl:divide-x divide-zinc-300 dark:divide-zinc-500">
                   {levels.map(({ level, xp }, index) => (
                     <div
+                      id={level.toString()}
                       key={index}
-                      className="w-24 flex flex-col content-center text-center"
+                      className="w-24 flex flex-col content-center py-1 text-center"
                     >
                       <span className="text-xl">{level}</span>
                       <span className="text-zinc-400 text-sm">
