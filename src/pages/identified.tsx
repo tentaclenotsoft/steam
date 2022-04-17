@@ -74,7 +74,7 @@ const Identified: NextPage = () => {
                   />
                 </div>
                 <div className="w-full grid grid-cols-2 gap-2">
-                  <div className="flex flex-col">
+                  <div className="flex flex-col col-span-2 sm:col-span-1">
                     <label className="text-zinc-500/80 dark:text-zinc-300/75">
                       Real name
                     </label>
@@ -82,7 +82,7 @@ const Identified: NextPage = () => {
                       {userData.realname}
                     </span>
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col col-span-2 sm:col-span-1">
                     <label className="text-zinc-500/80 dark:text-zinc-300/75">
                       Location
                     </label>
@@ -90,7 +90,7 @@ const Identified: NextPage = () => {
                       {userData.location}
                     </span>
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col col-span-2 sm:col-span-1">
                     <label className="text-zinc-500/80 dark:text-zinc-300/75">
                       Status
                     </label>
@@ -98,7 +98,7 @@ const Identified: NextPage = () => {
                       {userData.status}
                     </span>
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col col-span-2 sm:col-span-1">
                     <label className="text-zinc-500/80 dark:text-zinc-300/75">
                       Profile privacy
                     </label>
