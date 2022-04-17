@@ -1,21 +1,60 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { BiUpArrowAlt } from 'react-icons/bi'
 
 import type { NextPage } from 'next'
+
+import { Form } from '@unform/web'
 
 import SteamLevelsTable from '../../assets/json/steam-levels-table.json'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
+import Input from '../../components/Input'
 import SteamLevels from '../../components/leveled/SteamLevels'
 import { numberFormatter } from '../../utils'
 
 const Table: NextPage = () => {
+  const [showButton, setShowButton] = useState(false)
+
+  useEffect(
+    () =>
+      window.addEventListener('scroll', () =>
+        setShowButton(window.pageYOffset > 300)
+      ),
+    []
+  )
+
+  const scrollToTop = () =>
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+
   return (
     <div className="h-screen flex flex-col justify-between">
       <Header
         title="Steam Leveled"
         pages={[{ title: 'Leveled', path: '/leveled' }]}
       />
-      <div className="mx-5 sm:m-auto">
+      <div className="mx-5 sm:m-auto space-y-3">
+        <div className="p-5 bg-zinc-100 dark:bg-zinc-700 drop-shadow-md">
+          <Form
+            onSubmit={({ level }: { level: number }) =>
+              (window.location.href = '/leveled/table#' + level)
+            }
+          >
+            <div className="flex space-x-2">
+              <Input
+                name="level"
+                className="w-full h-8 px-2 text-zinc-600/90 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-600/75 outline-none"
+                type="text"
+                placeholder="Level"
+              />
+              <button className="px-2 font-semibold text-white bg-indigo-600 hover:bg-indigo-500">
+                Search
+              </button>
+            </div>
+          </Form>
+        </div>
         <div className="p-5 bg-zinc-100 dark:bg-zinc-700 drop-shadow-md">
           {Object.entries(SteamLevelsTable).map(
             ([levelIndex, levels], index) => (
@@ -45,6 +84,14 @@ const Table: NextPage = () => {
           )}
         </div>
       </div>
+      {showButton && (
+        <button
+          className="fixed right-5 bottom-5 p-1 bg-zinc-100 dark:bg-zinc-700 hover:bg-zinc-200 hover:dark:bg-zinc-600 drop-shadow-md"
+          onClick={scrollToTop}
+        >
+          <BiUpArrowAlt size={30} />
+        </button>
+      )}
       <Footer hoverTextStyle="hover:text-indigo-600 dark:hover:text-indigo-500" />
     </div>
   )
