@@ -6,13 +6,13 @@ import type { NextPage } from 'next'
 import { Form } from '@unform/web'
 import useLocalStorage from 'use-local-storage'
 
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import Input from '../components/Input'
-import SteamLevels from '../components/leveled/SteamLevels'
-import { ILeveledResponse, ILeveledSettings } from '../interfaces'
-import { numberFormatter } from '../utils'
-import Request from '../utils/fetcher'
+import Footer from '../../components/Footer'
+import Header from '../../components/Header'
+import Input from '../../components/Input'
+import SteamLevels from '../../components/leveled/SteamLevels'
+import { ILeveledResponse, ILeveledSettings } from '../../interfaces'
+import { numberFormatter } from '../../utils'
+import Request from '../../utils/fetcher'
 
 const Leveled: NextPage = () => {
   const [leveledSettings, setLeveledSettings] = useLocalStorage(
@@ -66,7 +66,10 @@ const Leveled: NextPage = () => {
 
   return (
     <div className="h-screen flex flex-col justify-between">
-      <Header title="Steam Leveled" />
+      <Header
+        title="Steam Leveled"
+        pages={[{ title: 'Table', path: '/leveled/table' }]}
+      />
       <div className="flex justify-center">
         <div className="w-96 sm:w-fit mx-5 sm:m-auto space-y-3 drop-shadow-md">
           <div>
