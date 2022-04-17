@@ -24,3 +24,7 @@ export interface ILeveledOptions {
   rate: number
   max_level: number
 }
+
+export type LeveledSettings = Omit<ILeveledSettings, 'steam_id'> & {
+  user: string
+}

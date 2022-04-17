@@ -10,18 +10,18 @@ import Footer from '../../components/Footer'
 import Header from '../../components/Header'
 import Input from '../../components/Input'
 import SteamLevels from '../../components/leveled/SteamLevels'
-import { ILeveledResponse, ILeveledSettings } from '../../interfaces'
+import { ILeveledResponse, LeveledSettings } from '../../interfaces'
 import { createApiRoute, numberFormatter } from '../../utils'
 import Request from '../../utils/Fetcher'
 
 const Leveled: NextPage = () => {
   const [leveledSettings, setLeveledSettings] = useLocalStorage(
     'leveled/settings',
-    {} as ILeveledSettings
+    {} as LeveledSettings
   )
   const mergeLeveledSettings = (object: {
     [key: string]: string
-  }): ILeveledSettings => Object.assign({}, leveledSettings, object)
+  }): LeveledSettings => Object.assign({}, leveledSettings, object)
   const [inputType, setInputType] = useState('')
   const [inputOutline, setInputOutline] = useState('')
   const useMountEffect = (effect: EffectCallback) => useEffect(effect, [])
@@ -47,10 +47,10 @@ const Leveled: NextPage = () => {
     {} as ILeveledResponse
   )
   const handleSubmit = (data: { [key: string]: string }) =>
-    Request(createApiRoute('/leveled'), {
+    Request(createApiRoute('/leveled', 2), {
       query: {
         key: leveledSettings?.steam_api_key,
-        steam_id: leveledSettings?.steam_id,
+        user: leveledSettings?.user,
         ...data
       }
     }).then((data) => {
@@ -114,19 +114,19 @@ const Leveled: NextPage = () => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="mb-1">SteamID</label>
+                  <label className="mb-1">User</label>
                   <input
                     className="w-full lg:w-80 h-8 px-2 text-zinc-600/90 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-600/75 outline-none"
                     type="text"
-                    placeholder="Your SteamID"
+                    placeholder="Steam ID, custom URL or profile link"
                     onChange={(event) =>
                       setLeveledSettings(
                         mergeLeveledSettings({
-                          steam_id: event.target.value
+                          user: event.target.value
                         })
                       )
                     }
-                    defaultValue={leveledSettings?.steam_id}
+                    defaultValue={leveledSettings?.user}
                   />
                 </div>
               </div>
