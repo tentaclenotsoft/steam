@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       colors: {},
       fontFamily: {
-        'proxima-nova': ['Proxima Nova', 'sans-serif']
+        'proxima-nova': ['Proxima Nova', 'sans-serif'],
+        'motiva-sans': ['Motiva Sans', 'sans-serif']
       }
     }
   },
