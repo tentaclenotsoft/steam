@@ -26,7 +26,7 @@ const Table: NextPage = () => {
                 <div className="my-auto mx-5 md:ml-6">
                   <SteamLevels level={+levelIndex} />
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-5 xl:grid-cols-10 ml-8 py-3 xl:divide-x divide-zinc-300 dark:divide-zinc-500">
+                <div className="grid grid-cols-2 md:grid-cols-5 xl:grid-cols-10 ml-8 py-3 xl:divide-x divide-zinc-300/60 dark:divide-zinc-500/30">
                   {levels.map(({ level, xp }, index) => (
                     <div
                       id={level.toString()}
