@@ -98,6 +98,8 @@ const Leveled = ({
       const setsNeededToLevelUp = Math.ceil(
         data.player_xp_needed_to_level_up / 100
       )
+      const friends =
+        dreamLevel < 350 ? (dreamLevel - level) * 5 + level * 5 + 250 : 2000
 
       return {
         xp: data.player_xp,
@@ -110,7 +112,8 @@ const Leveled = ({
         xp_needed: setsNeeded * 100,
         keys_needed: setsNeeded / rate,
         emoticons_and_backgrounds: setsNeeded * 2,
-        coupons: setsNeeded
+        coupons: setsNeeded,
+        friends
       }
     })
     .catch(async (response) => {

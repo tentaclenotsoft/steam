@@ -15,6 +15,7 @@ export interface ILeveledResponse {
   keys_needed: number
   emoticons_and_backgrounds: number
   coupons: number
+  friends: number
 }
 
 export interface ILeveledOptions {

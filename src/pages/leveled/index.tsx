@@ -196,7 +196,7 @@ const Leveled: NextPage = () => {
                     {numberFormatter(+leveledData.coupons || 0)}
                   </span>
                 </div>
-                <div className="flex flex-col m-auto items-center text-center sm:col-span-3">
+                <div className="flex flex-col m-auto items-center text-center sm:col-span-2">
                   <span className="text-zinc-400 text-sm">
                     Emoticons & Background
                   </span>
@@ -204,6 +204,17 @@ const Leveled: NextPage = () => {
                     {numberFormatter(
                       leveledData.emoticons_and_backgrounds || 0
                     )}
+                  </span>
+                </div>
+                <div className="flex flex-col m-auto items-center text-center">
+                  <span className="text-zinc-400 text-sm">Friends</span>
+                  <span className="text-xl">
+                    {numberFormatter(leveledData.friends || 0)}
+                    <span className="text-zinc-400/50 dark:text-zinc-500">
+                      {' '}
+                      /{' '}
+                    </span>
+                    {numberFormatter(leveledData.friends ? 2000 : 0)}
                   </span>
                 </div>
               </div>
