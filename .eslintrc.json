@@ -43,5 +43,10 @@
     "no-use-before-define": "off",
     "space-before-function-paren": ["error", "always"],
     "prettier/prettier": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }
