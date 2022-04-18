@@ -59,7 +59,7 @@ const Home: NextPage = () => {
               >
                 <AiFillCaretLeft className="hover:text-zinc-600 dark:hover:text-zinc-300" />
               </button>
-              <h1 className="text-6xl md:text-7xl text-center font-extrabold hover:text-zinc-600 dark:hover:text-zinc-300 hover:cursor-pointer">
+              <h1 className="w-72 md:w-[36rem] text-6xl md:text-7xl text-center font-extrabold hover:text-zinc-600 dark:hover:text-zinc-300 hover:cursor-pointer">
                 <a href={project?.path}>{`Steam ${project?.title}`}</a>
               </h1>
               <button className="text-5xl font-extrabold" onClick={moveNext}>
