@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { BiUpArrowAlt } from 'react-icons/bi'
+import { toast } from 'react-toastify'
 
 import type { NextPage } from 'next'
 
@@ -11,6 +12,7 @@ import Header from '../../components/Header'
 import Input from '../../components/Input'
 import SteamLevels from '../../components/leveled/SteamLevels'
 import { numberFormatter } from '../../utils'
+import { MAX_LEVEL } from '../../utils/Constants'
 
 const Table: NextPage = () => {
   const [showButton, setShowButton] = useState(false)
@@ -28,6 +30,16 @@ const Table: NextPage = () => {
       top: 0,
       behavior: 'smooth'
     })
+  const handleSubmit = ({ level }: { level: number }) => {
+    if (level > MAX_LEVEL) {
+      return toast.error(`Level ${level} exceeds the maximum Steam level`, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 4000
+      })
+    }
+
+    window.location.href = '/leveled/table#' + level
+  }
 
   return (
     <div className="h-screen flex flex-col justify-between">
@@ -37,11 +49,7 @@ const Table: NextPage = () => {
       />
       <div className="mx-5 sm:m-auto space-y-3">
         <div className="p-5 bg-zinc-100 dark:bg-zinc-700 drop-shadow-md">
-          <Form
-            onSubmit={({ level }: { level: number }) =>
-              (window.location.href = '/leveled/table#' + level)
-            }
-          >
+          <Form onSubmit={handleSubmit}>
             <div className="flex space-x-2">
               <Input
                 name="level"

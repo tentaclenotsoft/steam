@@ -1,3 +1,5 @@
+const MAX_LEVEL = 5299
+
 const ProjectPages = [
   {
     title: 'Leveled',
@@ -19,4 +21,4 @@ const SteamHTTP = {
   COMMUNITY: 'https://steamcommunity.com'
 }
 
-export { ProjectPages, SteamHTTP }
+export { MAX_LEVEL, ProjectPages, SteamHTTP }

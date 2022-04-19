@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import SteamID from 'steamid'
 
 import { ILeveledOptions, IUserData } from '../../../interfaces'
+import { MAX_LEVEL } from '../../../utils/Constants'
 import { Identified, Leveled } from '../../../utils/Functions'
 
 export default async (request: NextApiRequest, response: NextApiResponse) => {
@@ -38,7 +39,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
             steam_id: userData.steam_id64,
             dream_level: +dream_level,
             rate: +rate,
-            max_level: 5299
+            max_level: MAX_LEVEL
           } as ILeveledOptions)
         )
         response.status(200)
