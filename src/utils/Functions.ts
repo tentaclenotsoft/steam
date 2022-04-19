@@ -1,4 +1,3 @@
-import QS from 'querystring'
 import SteamID from 'steamid'
 import XML2JS from 'xml2js'
 
@@ -15,11 +14,12 @@ import {
   ILeveledOptions,
   IPromiseFulfilledResult
 } from '../interfaces'
+import { SteamHTTP } from './Constants'
 import { EPrivacyState } from './Enums'
 import Request from './Fetcher'
 
 const Identified = (value: string) =>
-  Request(`https://steamcommunity.com/${parseSteamProfileURL(value)}`, {
+  Request(`${SteamHTTP.COMMUNITY}/${parseSteamProfileURL(value)}`, {
     query: { xml: 1 }
   }).then(async (body) => {
     const { profile } = await XML2JS.parseStringPromise(body, {
@@ -75,15 +75,12 @@ const Leveled = ({
 
   if (!steamID.isValid()) throw new Error('Provide a valid Steam ID')
 
-  return fetch(
-    `http://api.steampowered.com/IPlayerService/GetBadges/v1?${QS.stringify({
+  return Request(`${SteamHTTP.API}/IPlayerService/GetBadges/v1`, {
+    query: {
       key,
       steamid: steamID.getSteamID64()
-    })}`
-  )
-    .then((response) =>
-      response.ok ? response.json() : Promise.reject(response)
-    )
+    }
+  })
     .then(({ response: data }) => {
       const level: number = data.player_level
 
@@ -116,14 +113,13 @@ const Leveled = ({
         friends
       }
     })
-    .catch(async (response) => {
-      if (response.status === 403) {
-        const message = await response.text()
+    .catch((error) => {
+      if (!error.message) {
         throw new Error(
-          message.match(/(?<=<\/h1>)(.+)(?=<pre>)/)?.shift() + 'key.'
+          error.match(/(?<=<\/h1>)(.+)(?=<pre>)/)?.shift() + 'key.'
         )
       } else {
-        throw new Error(response.message)
+        throw new Error(error.message)
       }
     })
 }

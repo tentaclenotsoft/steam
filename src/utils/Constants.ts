@@ -16,8 +16,9 @@ const ProjectPages = [
 ]
 
 const SteamHTTP = {
-  API: 'http://store.steampowered.com/api',
+  API: 'https://api.steampowered.com',
   STORE: 'https://store.steampowered.com',
+  STORE_API: 'http://store.steampowered.com/api',
   COMMUNITY: 'https://steamcommunity.com'
 }
 

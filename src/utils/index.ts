@@ -8,7 +8,7 @@ const createApiRoute = (path: string, version = 1) =>
   `/api/v${version}${!path.startsWith('/') ? '/' + path : path}`
 
 const getAppDetails = (appID: number) =>
-  Request(`${SteamHTTP.API}/appdetails`, {
+  Request(`${SteamHTTP.STORE_API}/appdetails`, {
     query: { appids: appID }
   }).then((data) => {
     const success = data[appID].success
