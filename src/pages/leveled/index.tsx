@@ -55,7 +55,7 @@ const Leveled: NextPage = () => {
       }
     }).then((data) => {
       if (data.message) {
-        toast.error(data.message, {
+        return toast.error(data.message, {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 4000
         })
