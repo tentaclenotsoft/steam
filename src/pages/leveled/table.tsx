@@ -32,7 +32,12 @@ const Table: NextPage = () => {
       behavior: 'smooth'
     })
   const handleSubmit = ({ level }: { level: number }) => {
-    if (level > MAX_LEVEL) {
+    if (level < 1) {
+      return Toast({
+        type: EToastType.ERROR,
+        message: 'The set level is too low'
+      })
+    } else if (level > MAX_LEVEL) {
       return Toast({
         type: EToastType.ERROR,
         message: `Level ${level} exceeds the maximum Steam level`
