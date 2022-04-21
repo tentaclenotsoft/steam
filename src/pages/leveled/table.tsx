@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { BiUpArrowAlt } from 'react-icons/bi'
-import { toast } from 'react-toastify'
 
 import type { NextPage } from 'next'
 
@@ -11,8 +10,10 @@ import Footer from '../../components/Footer'
 import Header from '../../components/Header'
 import Input from '../../components/Input'
 import SteamLevels from '../../components/leveled/SteamLevels'
+import Toast from '../../components/Toast'
 import { numberFormatter } from '../../utils'
 import { MAX_LEVEL } from '../../utils/Constants'
+import { EToastType } from '../../utils/Enums'
 
 const Table: NextPage = () => {
   const [showButton, setShowButton] = useState(false)
@@ -32,9 +33,9 @@ const Table: NextPage = () => {
     })
   const handleSubmit = ({ level }: { level: number }) => {
     if (level > MAX_LEVEL) {
-      return toast.error(`Level ${level} exceeds the maximum Steam level`, {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 4000
+      return Toast({
+        type: EToastType.ERROR,
+        message: `Level ${level} exceeds the maximum Steam level`
       })
     }
 

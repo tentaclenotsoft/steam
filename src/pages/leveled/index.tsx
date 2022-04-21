@@ -1,5 +1,4 @@
 import React, { EffectCallback, useEffect, useState } from 'react'
-import { toast } from 'react-toastify'
 
 import type { NextPage } from 'next'
 
@@ -10,8 +9,10 @@ import Footer from '../../components/Footer'
 import Header from '../../components/Header'
 import Input from '../../components/Input'
 import SteamLevels from '../../components/leveled/SteamLevels'
+import Toast from '../../components/Toast'
 import { ILeveledResponse, LeveledSettings } from '../../interfaces'
 import { createApiRoute, numberFormatter } from '../../utils'
+import { EToastType } from '../../utils/Enums'
 import Request from '../../utils/Fetcher'
 
 const Leveled: NextPage = () => {
@@ -55,10 +56,7 @@ const Leveled: NextPage = () => {
       }
     }).then((data) => {
       if (data.message) {
-        return toast.error(data.message, {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 4000
-        })
+        return Toast({ type: EToastType.ERROR, message: data.message })
       }
 
       setLeveledData(data)

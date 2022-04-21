@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { RiCheckboxBlankLine, RiCheckboxLine } from 'react-icons/ri'
-import { toast } from 'react-toastify'
 
 import type { NextPage } from 'next'
 import Image from 'next/image'
@@ -10,9 +9,11 @@ import { Form } from '@unform/web'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Input from '../components/Input'
+import Toast from '../components/Toast'
 import { IUserData } from '../interfaces'
 import { createApiRoute } from '../utils'
 import { SteamHTTP } from '../utils/Constants'
+import { EToastType } from '../utils/Enums'
 import Request from '../utils/Fetcher'
 
 const Identified: NextPage = () => {
@@ -25,10 +26,7 @@ const Identified: NextPage = () => {
       }
     }).then((data) => {
       if (data.message) {
-        toast.error(data.message, {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 4000
-        })
+        return Toast({ type: EToastType.ERROR, message: data.message })
       }
 
       setUserData(data)

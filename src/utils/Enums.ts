@@ -5,3 +5,9 @@ export enum EPrivacyState {
   friendsonly = 'Friends Only',
   private = 'Private'
 }
+
+export enum EToastType {
+  SUCCESS = 'SUCCESS',
+  WARNING = 'WARN',
+  ERROR = 'ERROR'
+}
