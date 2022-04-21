@@ -2,17 +2,18 @@ import React, { EffectCallback, useEffect, useState } from 'react'
 
 import type { NextPage } from 'next'
 
+import { Form } from '@unform/web'
+import useLocalStorage from 'use-local-storage'
+
 import Footer from '@components/Footer'
 import Header from '@components/Header'
 import Input from '@components/Input'
 import SteamLevels from '@components/leveled/SteamLevels'
 import Toast from '@components/Toast'
 import { ILeveledResponse, LeveledSettings } from '@interfaces'
-import { Form } from '@unform/web'
 import { createApiRoute, numberFormatter } from '@utils'
 import { EToastType } from '@utils/Enums'
 import Request from '@utils/Fetcher'
-import useLocalStorage from 'use-local-storage'
 
 const Leveled: NextPage = () => {
   const [leveledSettings, setLeveledSettings] = useLocalStorage(

@@ -3,11 +3,12 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import type { NextPage } from 'next'
 
+import { Form } from '@unform/web'
+
 import Footer from '@components/Footer'
 import Header from '@components/Header'
 import Input from '@components/Input'
 import { IAppDetails, IPromiseFulfilledResult } from '@interfaces'
-import { Form } from '@unform/web'
 import { createApiRoute } from '@utils'
 import { SteamHTTP } from '@utils/Constants'
 import Request from '@utils/Fetcher'

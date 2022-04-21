@@ -1,9 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import SteamID from 'steamid'
+
 import { ILeveledOptions, IUserData } from '@interfaces'
 import { MAX_LEVEL } from '@utils/Constants'
 import { Identified, Leveled } from '@utils/Functions'
-import SteamID from 'steamid'
 
 export default async (request: NextApiRequest, response: NextApiResponse) => {
   const { key, user, dream_level, rate } = request.query as {
