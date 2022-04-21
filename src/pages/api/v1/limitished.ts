@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { Limitished } from '../../../utils/Functions'
+import { Limitished } from '@utils/Functions'
 
 export default async (request: NextApiRequest, response: NextApiResponse) => {
   const { app_id } = request.query

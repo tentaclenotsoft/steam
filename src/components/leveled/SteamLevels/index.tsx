@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { levelToClasses } from '../../../utils'
+import { levelToClasses } from '@utils'
 
 const SteamLevels = ({ level }: { level: number }) => {
   const levelClasses = levelToClasses(level)

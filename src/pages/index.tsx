@@ -3,10 +3,9 @@ import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai'
 
 import type { NextPage } from 'next'
 
+import SwitchTheme from '@components/SwitchTheme'
+import { ProjectPages } from '@utils/Constants'
 import useLocalStorage from 'use-local-storage'
-
-import SwitchTheme from '../components/SwitchTheme'
-import { ProjectPages } from '../utils/Constants'
 
 interface IProject {
   title: string

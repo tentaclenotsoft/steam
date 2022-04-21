@@ -3,17 +3,16 @@ import { BiUpArrowAlt } from 'react-icons/bi'
 
 import type { NextPage } from 'next'
 
+import SteamLevelsTable from '@assets/json/steam-levels-table.json'
+import Footer from '@components/Footer'
+import Header from '@components/Header'
+import Input from '@components/Input'
+import SteamLevels from '@components/leveled/SteamLevels'
+import Toast from '@components/Toast'
 import { Form } from '@unform/web'
-
-import SteamLevelsTable from '../../assets/json/steam-levels-table.json'
-import Footer from '../../components/Footer'
-import Header from '../../components/Header'
-import Input from '../../components/Input'
-import SteamLevels from '../../components/leveled/SteamLevels'
-import Toast from '../../components/Toast'
-import { numberFormatter } from '../../utils'
-import { MAX_LEVEL } from '../../utils/Constants'
-import { EToastType } from '../../utils/Enums'
+import { numberFormatter } from '@utils'
+import { MAX_LEVEL } from '@utils/Constants'
+import { EToastType } from '@utils/Enums'
 
 const Table: NextPage = () => {
   const [showButton, setShowButton] = useState(false)

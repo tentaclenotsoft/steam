@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { Identified } from '../../../utils/Functions'
+import { Identified } from '@utils/Functions'
 
 export default async (request: NextApiRequest, response: NextApiResponse) => {
   const { value } = request.query

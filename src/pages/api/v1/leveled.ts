@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { ILeveledOptions } from '../../../interfaces'
-import { MAX_LEVEL } from '../../../utils/Constants'
-import { Leveled } from '../../../utils/Functions'
+import { ILeveledOptions } from '@interfaces'
+import { MAX_LEVEL } from '@utils/Constants'
+import { Leveled } from '@utils/Functions'
 
 export default async (request: NextApiRequest, response: NextApiResponse) => {
   const { key, steam_id, dream_level, rate } = request.query

@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify'
 
-import { EToastType } from '../utils/Enums'
+import { EToastType } from '@utils/Enums'
 
 const toastOptions = {
   position: toast.POSITION.TOP_CENTER,
