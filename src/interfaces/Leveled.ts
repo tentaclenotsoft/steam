@@ -10,6 +10,7 @@ export interface ILeveledResponse {
   sets_needed_to_level_up: number
   keys_needed_to_level_up: number
   dream_level: number
+  xp_from_dream_level: number
   sets_needed: number
   xp_needed: number
   keys_needed: number

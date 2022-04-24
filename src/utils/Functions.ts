@@ -105,6 +105,7 @@ const Leveled = ({
         sets_needed_to_level_up: setsNeededToLevelUp,
         keys_needed_to_level_up: setsNeededToLevelUp / rate,
         dream_level: dreamLevel,
+        xp_from_dream_level: xpFromDreamLevel,
         sets_needed: setsNeeded,
         xp_needed: setsNeeded * 100,
         keys_needed: setsNeeded / rate,
