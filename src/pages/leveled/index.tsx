@@ -10,6 +10,7 @@ import Header from '@components/Header'
 import Input from '@components/Input'
 import SteamLevels from '@components/leveled/SteamLevels'
 import Toast from '@components/Toast'
+import Tooltip from '@components/Tooltip'
 import { ILeveledResponse, LeveledSettings } from '@interfaces'
 import { createApiRoute, numberFormatter } from '@utils'
 import { EToastType } from '@utils/Enums'
@@ -28,8 +29,7 @@ const Leveled: NextPage = () => {
   const useMountEffect = (effect: EffectCallback) => useEffect(effect, [])
   const validKeySize = (value: string) =>
     !!(value?.length < 32 || value?.length > 32)
-  const titleWithLevelXP = (value) =>
-    value && { title: numberFormatter(value) + ' XP' }
+  const tooltipWithLevelXP = (value) => value && numberFormatter(value) + ' XP'
 
   useMountEffect(() =>
     setInputType(
@@ -164,11 +164,10 @@ const Leveled: NextPage = () => {
             </div>
             <div className="w-full flex flex-col px-5 py-4 border border-zinc-400/20 dark:border-zinc-800/20 bg-zinc-100 dark:bg-zinc-700 space-y-5">
               <div className="h-16 flex justify-between items-center mx-4 sm:mx-10">
-                <div
-                  className="scale-125"
-                  {...titleWithLevelXP(leveledData?.xp)}
-                >
-                  <SteamLevels level={leveledData?.level} />
+                <div className="scale-125">
+                  <Tooltip content={tooltipWithLevelXP(leveledData?.xp)}>
+                    <SteamLevels level={leveledData?.level} />
+                  </Tooltip>
                 </div>
                 <div className="flex flex-col items-center text-center font-light -space-y-1">
                   <span className="text-zinc-400 text-xs">XP needed</span>
@@ -176,11 +175,14 @@ const Leveled: NextPage = () => {
                     {numberFormatter(leveledData.xp_needed || 0)}
                   </span>
                 </div>
-                <div
-                  className="scale-125"
-                  {...titleWithLevelXP(leveledData?.xp_from_dream_level)}
-                >
-                  <SteamLevels level={leveledData?.dream_level} />
+                <div className="scale-125">
+                  <Tooltip
+                    content={tooltipWithLevelXP(
+                      leveledData?.xp_from_dream_level
+                    )}
+                  >
+                    <SteamLevels level={leveledData?.dream_level} />
+                  </Tooltip>
                 </div>
               </div>
               <div className="h-full grid grid-cols-2 sm:grid-cols-3">
