@@ -79,7 +79,7 @@ const Identified: NextPage = () => {
                       height={385}
                     />
                     {userData.avatar_url?.full && (
-                      <button className="h-[2.3rem] absolute inset-0 z-10 left-auto drop-shadow-[0_1px_2px_rgba(0,0,0,1)] opacity-50 hover:opacity-75">
+                      <button className="h-[2.3rem] absolute inset-0 z-10 left-auto text-white drop-shadow-[0_1px_2px_rgba(0,0,0,1)] opacity-50 hover:opacity-75">
                         <a
                           href={userData.avatar_url?.full}
                           target="_blank"
