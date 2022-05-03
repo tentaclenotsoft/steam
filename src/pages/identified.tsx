@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import {
+  RiArrowRightUpLine,
   RiCheckboxBlankLine,
   RiCheckboxLine,
   RiFileCopyFill
@@ -68,14 +69,27 @@ const Identified: NextPage = () => {
             <div className="p-5 space-y-2 bg-zinc-100 dark:bg-zinc-700">
               <div className="flex flex-col sm:flex-row justify-center space-x-0 sm:space-x-3 space-y-3 sm:space-y-0">
                 <div className="flex justify-center">
-                  <Image
-                    src={
-                      userData.avatar_url?.full ||
-                      '/images/jpg/default_avatar.jpg'
-                    }
-                    width={385}
-                    height={385}
-                  />
+                  <div className="relative">
+                    <Image
+                      src={
+                        userData.avatar_url?.full ||
+                        '/images/jpg/default_avatar.jpg'
+                      }
+                      width={385}
+                      height={385}
+                    />
+                    {userData.avatar_url?.full && (
+                      <button className="h-[2.3rem] absolute inset-0 z-10 left-auto drop-shadow-[0_1px_2px_rgba(0,0,0,1)] opacity-50 hover:opacity-75">
+                        <a
+                          href={userData.avatar_url?.full}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <RiArrowRightUpLine size={36} />
+                        </a>
+                      </button>
+                    )}
+                  </div>
                 </div>
                 <div className="w-full grid grid-cols-2 gap-2">
                   <div className="flex flex-col col-span-2 sm:col-span-1">
