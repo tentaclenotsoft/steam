@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
-import { RiCheckboxBlankLine, RiCheckboxLine } from 'react-icons/ri'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+import {
+  RiCheckboxBlankLine,
+  RiCheckboxLine,
+  RiFileCopyFill
+} from 'react-icons/ri'
 
 import type { NextPage } from 'next'
 import Image from 'next/image'
@@ -172,8 +177,25 @@ const Identified: NextPage = () => {
                     <span className="text-zinc-500/80 dark:text-zinc-300/75">
                       {label}
                     </span>
-                    <div className="h-max min-h-[2rem] p-1 bg-zinc-300 dark:bg-zinc-800/40 break-all">
-                      <span>{value}</span>
+                    <div className="h-max min-h-[2rem] flex justify-between p-1 bg-zinc-300 dark:bg-zinc-800/40 break-all">
+                      {value && (
+                        <>
+                          <span>{value}</span>
+                          <CopyToClipboard text={value}>
+                            <button
+                              className="grid content-center"
+                              onClick={() =>
+                                Toast({
+                                  type: EToastType.SUCCESS,
+                                  message: `${label} has been copied to clipboard`
+                                })
+                              }
+                            >
+                              <RiFileCopyFill size={20} />
+                            </button>
+                          </CopyToClipboard>
+                        </>
+                      )}
                     </div>
                   </div>
                 ))}
