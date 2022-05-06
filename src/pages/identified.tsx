@@ -69,7 +69,7 @@ const Identified: NextPage = () => {
             <div className="p-5 space-y-2 bg-zinc-100 dark:bg-zinc-700">
               <div className="flex flex-col sm:flex-row justify-center space-x-0 sm:space-x-3 space-y-3 sm:space-y-0">
                 <div className="flex justify-center">
-                  <div className="relative">
+                  <div className="relative select-none">
                     <Image
                       src={
                         userData.avatar_url?.full ||
@@ -77,6 +77,8 @@ const Identified: NextPage = () => {
                       }
                       width={385}
                       height={385}
+                      draggable={false}
+                      onContextMenu={(event) => event.preventDefault()}
                     />
                     {userData.avatar_url?.full && (
                       <button className="h-[2.3rem] absolute inset-0 z-10 left-auto text-white drop-shadow-[0_1px_2px_rgba(0,0,0,1)] opacity-50 hover:opacity-75">
