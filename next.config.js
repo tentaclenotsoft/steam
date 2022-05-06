@@ -4,7 +4,8 @@ module.exports = {
   images: {
     domains: [
       'avatars.akamai.steamstatic.com',
-      'avatars.cloudflare.steamstatic.com'
+      'avatars.cloudflare.steamstatic.com',
+      'steamcdnstoragequincy.blob.core.windows.net'
     ]
   },
   async redirects() {
