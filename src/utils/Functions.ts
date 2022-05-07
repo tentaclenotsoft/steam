@@ -1,3 +1,4 @@
+import { load } from 'cheerio'
 import SteamID from 'steamid'
 import XML2JS from 'xml2js'
 
@@ -18,44 +19,60 @@ import { SteamHTTP } from './Constants'
 import { EPrivacyState } from './Enums'
 import Request from './Fetcher'
 
-const Identified = (value: string) =>
-  Request(`${SteamHTTP.COMMUNITY}/${parseSteamProfileURL(value)}`, {
-    query: { xml: 1 }
-  }).then(async (body) => {
-    const { profile } = await XML2JS.parseStringPromise(body, {
-      explicitArray: false,
-      trim: true
-    })
-
-    if (!profile) {
-      throw new Error('The specified profile could not be found')
-    }
-
-    const steamID = new SteamID(profile.steamID64)
+const Identified = async (value: string) => {
+  const userProfile = await Request(
+    `${SteamHTTP.COMMUNITY}/${parseSteamProfileURL(value)}`
+  ).then((body) => {
+    const $ = load(body)
 
     return {
-      steam_3id: steamID.getSteam3RenderedID(),
-      steam_id32: steamID.getSteam2RenderedID(),
-      steam_id64: steamID.getSteamID64(),
-      custom_url: profile.customURL || null,
-      name: profile.steamID,
-      realname: profile.realname || null,
-      avatar_url: {
-        small: profile.avatarIcon,
-        medium: profile.avatarMedium,
-        full: profile.avatarFull
-      },
-      location: profile.location || null,
-      status: profile.stateMessage.replace(/<br\/>.*/, ''),
-      privacy: EPrivacyState[profile.privacyState],
-      limitations: {
-        vac: !!+profile.vacBanned,
-        trade_ban: profile.tradeBanState !== 'None',
-        limited: !!+profile.isLimitedAccount
-      },
-      member_since: profile.memberSince || null
+      private: !!$('.profile_private_info').text().trim(),
+      level: +$('.friendPlayerLevelNum').first().text() || null
     }
   })
+
+  return Request(`${SteamHTTP.COMMUNITY}/${parseSteamProfileURL(value)}`, {
+    query: { xml: 1 }
+  })
+    .then((body) =>
+      XML2JS.parseStringPromise(body, {
+        explicitArray: false,
+        trim: true
+      })
+    )
+    .then(({ profile }) => {
+      if (!profile) {
+        throw new Error('The specified profile could not be found')
+      }
+
+      const steamID = new SteamID(profile.steamID64)
+
+      return {
+        steam_3id: steamID.getSteam3RenderedID(),
+        steam_id32: steamID.getSteam2RenderedID(),
+        steam_id64: steamID.getSteamID64(),
+        custom_url: profile.customURL || null,
+        name: profile.steamID,
+        realname: profile.realname || null,
+        avatar_url: {
+          small: profile.avatarIcon,
+          medium: profile.avatarMedium,
+          full: profile.avatarFull
+        },
+        level: userProfile.level,
+        location: profile.location || null,
+        status: profile.stateMessage.replace(/<br\/>.*/, ''),
+        privacy: EPrivacyState[profile.privacyState],
+        limitations: {
+          vac: !!+profile.vacBanned,
+          trade_ban: profile.tradeBanState !== 'None',
+          limited: !!+profile.isLimitedAccount,
+          community_ban: !userProfile.private && !userProfile.level
+        },
+        member_since: profile.memberSince || null
+      }
+    })
+}
 
 const Leveled = ({
   key,
