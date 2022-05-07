@@ -62,8 +62,15 @@ const Identified: NextPage = () => {
           </div>
           <div className="drop-shadow-md">
             <div className="h-[3.25rem] py-2 text-center bg-zinc-500 dark:bg-zinc-800">
-              <span className="text-3xl font-semibold text-zinc-50">
-                {userData.name}
+              <span className="text-3xl font-semibold text-zinc-50 hover:text-zinc-200 dark:hover:text-zinc-300">
+                <a
+                  className="flex justify-center"
+                  href={`${SteamHTTP.COMMUNITY}/profiles/${userData.steam_id64}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {userData.name}
+                </a>
               </span>
             </div>
             <div className="p-5 space-y-2 bg-zinc-100 dark:bg-zinc-700">
