@@ -83,7 +83,7 @@ const Identified: NextPage = () => {
             )}
             <div className="md:min-w-[45rem] max-w-[45rem] px-5 pb-5 pt-1 space-y-2 bg-zinc-100 dark:bg-zinc-700">
               <div className="flex flex-col sm:flex-row justify-center space-x-0 sm:space-x-3 space-y-3 sm:space-y-0">
-                <div className="flex mt-1.5">
+                <div className="flex flex-col mt-1.5">
                   <div className="relative select-none">
                     <Image
                       src={
@@ -106,6 +106,21 @@ const Identified: NextPage = () => {
                         </a>
                       </button>
                     )}
+                  </div>
+                  <div className="grid grid-cols-3 mb-1.5 text-zinc-500/80 dark:text-zinc-300/75 divide-x divide-zinc-300 dark:divide-zinc-500/50">
+                    {userData.avatar_url &&
+                      Object.entries(userData.avatar_url).map(
+                        ([size, url], index) => (
+                          <button
+                            key={index}
+                            className="hover:bg-zinc-200/75 dark:hover:bg-zinc-500/25"
+                          >
+                            <a href={url} target="_blank" rel="noreferrer">
+                              {size.slice(0, 1).toUpperCase()}
+                            </a>
+                          </button>
+                        )
+                      )}
                   </div>
                 </div>
                 <div className="w-full">
