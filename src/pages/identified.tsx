@@ -107,18 +107,19 @@ const Identified: NextPage = () => {
                       </button>
                     )}
                   </div>
-                  <div className="grid grid-cols-3 mb-1.5 text-zinc-500/80 dark:text-zinc-300/75 divide-x divide-zinc-300 dark:divide-zinc-500/50">
+                  <div className="grid grid-cols-3 text-zinc-500/80 dark:text-zinc-300/75 divide-x divide-zinc-300 dark:divide-zinc-500/50">
                     {userData.avatar_url &&
                       Object.entries(userData.avatar_url).map(
                         ([size, url], index) => (
-                          <button
+                          <a
                             key={index}
-                            className="hover:bg-zinc-200/75 dark:hover:bg-zinc-500/25"
+                            className="text-center hover:bg-zinc-200/75 dark:hover:bg-zinc-500/25"
+                            href={url}
+                            target="_blank"
+                            rel="noreferrer"
                           >
-                            <a href={url} target="_blank" rel="noreferrer">
-                              {size.slice(0, 1).toUpperCase()}
-                            </a>
-                          </button>
+                            {size.slice(0, 1).toUpperCase()}
+                          </a>
                         )
                       )}
                   </div>
