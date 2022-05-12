@@ -10,6 +10,7 @@ export interface IUserData {
     medium: string
     full: string
   }
+  level: number | null
   location: string | null
   status: string
   privacy: string
@@ -17,6 +18,7 @@ export interface IUserData {
     vac: boolean
     trade_ban: boolean
     limited: boolean
+    community_ban: boolean
   }
   member_since: string | null
 }

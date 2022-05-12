@@ -15,6 +15,7 @@ import { Form } from '@unform/web'
 import Footer from '@components/Footer'
 import Header from '@components/Header'
 import Input from '@components/Input'
+import SteamLevels from '@components/leveled/SteamLevels'
 import Toast from '@components/Toast'
 import { IUserData } from '@interfaces'
 import { createApiRoute } from '@utils'
@@ -73,9 +74,16 @@ const Identified: NextPage = () => {
                 </a>
               </span>
             </div>
-            <div className="p-5 space-y-2 bg-zinc-100 dark:bg-zinc-700">
+            {userData.limitations?.community_ban ? (
+              <div className="h-5 text-sm text-center text-white bg-red-500">
+                <span className="animate-pulse">Community Banned</span>
+              </div>
+            ) : (
+              <div className="h-5 bg-zinc-100 dark:bg-zinc-700" />
+            )}
+            <div className="md:min-w-[45rem] max-w-[45rem] px-5 pb-5 pt-1 space-y-2 bg-zinc-100 dark:bg-zinc-700">
               <div className="flex flex-col sm:flex-row justify-center space-x-0 sm:space-x-3 space-y-3 sm:space-y-0">
-                <div className="flex justify-center">
+                <div className="flex mt-1.5">
                   <div className="relative select-none">
                     <Image
                       src={
@@ -100,40 +108,51 @@ const Identified: NextPage = () => {
                     )}
                   </div>
                 </div>
-                <div className="w-full grid grid-cols-2 gap-2">
-                  <div className="flex flex-col col-span-2 sm:col-span-1">
-                    <label className="text-zinc-500/80 dark:text-zinc-300/75">
-                      Real name
-                    </label>
-                    <span className="h-8 p-1 bg-zinc-300 dark:bg-zinc-800/40">
-                      {userData.realname}
-                    </span>
+                <div className="w-full">
+                  <div className="flex flex-col sm:flex-row justify-between items-center">
+                    <div className="w-full flex flex-col space-y-2">
+                      <div className="flex flex-col">
+                        <label className="text-zinc-500/80 dark:text-zinc-300/75">
+                          Real name
+                        </label>
+                        <span className="h-8 p-1 bg-zinc-300 dark:bg-zinc-800/40">
+                          {userData.realname?.length > 43
+                            ? `${userData.realname?.slice(0, 40)}...`
+                            : userData.realname}
+                        </span>
+                      </div>
+                      <div className="flex flex-col">
+                        <label className="text-zinc-500/80 dark:text-zinc-300/75">
+                          Location
+                        </label>
+                        <span className="h-8 p-1 bg-zinc-300 dark:bg-zinc-800/40">
+                          {userData.location}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-10 my-auto scale-[1.7]">
+                      <SteamLevels level={userData?.level} />
+                    </div>
                   </div>
-                  <div className="flex flex-col col-span-2 sm:col-span-1">
-                    <label className="text-zinc-500/80 dark:text-zinc-300/75">
-                      Location
-                    </label>
-                    <span className="h-8 p-1 bg-zinc-300 dark:bg-zinc-800/40">
-                      {userData.location}
-                    </span>
+                  <div className="flex flex-col sm:flex-row mt-2 sm:space-x-2 space-y-2 sm:space-y-0">
+                    <div className="w-full flex flex-col">
+                      <label className="text-zinc-500/80 dark:text-zinc-300/75">
+                        Status
+                      </label>
+                      <span className="h-8 p-1 bg-zinc-300 dark:bg-zinc-800/40">
+                        {userData.status}
+                      </span>
+                    </div>
+                    <div className="w-full flex flex-col">
+                      <label className="text-zinc-500/80 dark:text-zinc-300/75">
+                        Profile privacy
+                      </label>
+                      <span className="h-8 p-1 bg-zinc-300 dark:bg-zinc-800/40">
+                        {userData.privacy}
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex flex-col col-span-2 sm:col-span-1">
-                    <label className="text-zinc-500/80 dark:text-zinc-300/75">
-                      Status
-                    </label>
-                    <span className="h-8 p-1 bg-zinc-300 dark:bg-zinc-800/40">
-                      {userData.status}
-                    </span>
-                  </div>
-                  <div className="flex flex-col col-span-2 sm:col-span-1">
-                    <label className="text-zinc-500/80 dark:text-zinc-300/75">
-                      Profile privacy
-                    </label>
-                    <span className="h-8 p-1 bg-zinc-300 dark:bg-zinc-800/40">
-                      {userData.privacy}
-                    </span>
-                  </div>
-                  <div className="flex justify-between mt-2 px-2 py-1 col-span-2 text-zinc-500/80 dark:text-zinc-300/75">
+                  <div className="flex justify-between items-center mt-2 px-2 py-1 text-zinc-500/80 dark:text-zinc-300/75">
                     <span className="flex space-x-1.5">
                       <span>VAC</span>
                       {userData.limitations?.vac ? (
@@ -168,7 +187,7 @@ const Identified: NextPage = () => {
                       )}
                     </span>
                   </div>
-                  <div className="flex flex-col col-span-2 text-center">
+                  <div className="flex flex-col text-center">
                     <label className="text-zinc-500/80 dark:text-zinc-300/75">
                       Member since
                     </label>
