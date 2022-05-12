@@ -77,7 +77,7 @@ const numberFormatter = (value: number) => new Intl.NumberFormat().format(value)
 
 const parseSteamProfileURL = (value: string) => {
   const valueMatch = value.match(
-    /(?:https?:\/\/)?steamcommunity\.com\/((?:profiles|id)\/[a-zA-Z0-9]+)/
+    /(?:https?:\/\/)?steamcommunity\.com\/((?:profiles|id)\/[a-zA-Z0-9_-]+)/
   )
   const valueParsed = Array.isArray(valueMatch) ? valueMatch[1] : value
 
