@@ -8,7 +8,11 @@ const SteamLevels = ({ level }: { level: number }) => {
   return (
     <div className={`level ${levelClasses?.join(' ').trim()} scale-150`}>
       <div className="h-full flex justify-center">
-        <span className="text-white font-motiva-sans font-light">
+        <span
+          className={`font-light font-motiva-sans ${
+            !level ? 'text-[#9b9b9b]/50' : 'text-white'
+          }`}
+        >
           {level ?? '?'}
         </span>
       </div>
