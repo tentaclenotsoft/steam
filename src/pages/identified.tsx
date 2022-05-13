@@ -191,7 +191,7 @@ const Identified: NextPage = () => {
                   </div>
                   <div className="flex justify-between items-center mt-2 px-2 py-1 text-zinc-500/80 dark:text-zinc-300/75">
                     <span className="flex space-x-1.5">
-                      <span>VAC</span>
+                      <label>VAC</label>
                       {userData.limitations?.vac ? (
                         <RiCheckboxLine
                           color="rgb(220, 38, 38)"
@@ -202,7 +202,7 @@ const Identified: NextPage = () => {
                       )}
                     </span>
                     <span className="flex space-x-1.5">
-                      <span>Trade Ban</span>
+                      <label>Trade Ban</label>
                       {userData.limitations?.trade_ban ? (
                         <RiCheckboxLine
                           color="rgb(220, 38, 38)"
@@ -213,7 +213,7 @@ const Identified: NextPage = () => {
                       )}
                     </span>
                     <span className="flex space-x-1.5">
-                      <span>Limited</span>
+                      <label>Limited</label>
                       {userData.limitations?.limited ? (
                         <RiCheckboxLine
                           color="rgb(220, 38, 38)"
@@ -253,9 +253,9 @@ const Identified: NextPage = () => {
                   }
                 ].map(({ label, value }, index) => (
                   <div key={index}>
-                    <span className="text-zinc-500/80 dark:text-zinc-300/75">
+                    <label className="text-zinc-500/80 dark:text-zinc-300/75">
                       {label}
-                    </span>
+                    </label>
                     <div className="h-max min-h-[2rem] flex justify-between p-1 bg-zinc-300 dark:bg-zinc-800/40 break-all">
                       {value && (
                         <>
