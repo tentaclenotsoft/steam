@@ -16,6 +16,7 @@ import Footer from '@components/Footer'
 import Header from '@components/Header'
 import Input from '@components/Input'
 import SteamLevels from '@components/leveled/SteamLevels'
+import Loader from '@components/Loader'
 import Toast from '@components/Toast'
 import { IUserData } from '@interfaces'
 import { createApiRoute } from '@utils'
@@ -25,8 +26,11 @@ import Request from '@utils/Fetcher'
 
 const Identified: NextPage = () => {
   const checkboxIconSize = 24
+  const [loading, setLoading] = useState(false)
   const [userData, setUserData] = useState({} as IUserData)
-  const handleSubmit = (data: { [key: string]: string }) =>
+  const handleSubmit = (data: { [key: string]: string }) => {
+    setLoading(true)
+
     Request(createApiRoute('/identified'), {
       query: {
         value: data.user
@@ -36,8 +40,10 @@ const Identified: NextPage = () => {
         return Toast({ type: EToastType.ERROR, message: data.message })
       }
 
+      setLoading(false)
       setUserData(data)
     })
+  }
 
   return (
     <div className="h-screen flex flex-col justify-between">
@@ -54,14 +60,21 @@ const Identified: NextPage = () => {
                   placeholder="Steam ID, custom URL or profile link"
                 />
                 <div className="mt-4">
-                  <button className="h-10 w-full font-semibold text-white bg-red-600 hover:bg-red-500">
+                  <button
+                    className={`h-10 w-full font-semibold text-white ${
+                      !loading
+                        ? 'bg-red-600 hover:bg-red-500'
+                        : 'bg-red-600/50 cursor-not-allowed'
+                    }`}
+                    disabled={loading}
+                  >
                     Find
                   </button>
                 </div>
               </div>
             </Form>
           </div>
-          <div className="drop-shadow-md">
+          <div className="relative drop-shadow-md">
             <div className="h-[3.25rem] py-2 text-center bg-zinc-500 dark:bg-zinc-800">
               <span className="text-3xl font-semibold text-zinc-50 hover:text-zinc-200 dark:hover:text-zinc-300">
                 <a
@@ -259,6 +272,15 @@ const Identified: NextPage = () => {
                 ))}
               </div>
             </div>
+            {loading && (
+              <div className="absolute inset-0 z-10">
+                <div className="w-full h-full flex bg-zinc-300/80 dark:bg-zinc-700/80">
+                  <div className="mx-auto mt-52 sm:m-auto">
+                    <Loader loading={loading} color="rgb(220, 38, 38)" />
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

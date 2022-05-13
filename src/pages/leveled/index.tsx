@@ -9,6 +9,7 @@ import Footer from '@components/Footer'
 import Header from '@components/Header'
 import Input from '@components/Input'
 import SteamLevels from '@components/leveled/SteamLevels'
+import Loader from '@components/Loader'
 import Toast from '@components/Toast'
 import Tooltip from '@components/Tooltip'
 import { ILeveledResponse, LeveledSettings } from '@interfaces'
@@ -24,6 +25,7 @@ const Leveled: NextPage = () => {
   const mergeLeveledSettings = (object: {
     [key: string]: string
   }): LeveledSettings => Object.assign({}, leveledSettings, object)
+  const [loading, setLoading] = useState(false)
   const [inputType, setInputType] = useState('')
   const [inputOutline, setInputOutline] = useState('')
   const useMountEffect = (effect: EffectCallback) => useEffect(effect, [])
@@ -49,7 +51,9 @@ const Leveled: NextPage = () => {
   const [leveledData, setLeveledData] = useState<ILeveledResponse>(
     {} as ILeveledResponse
   )
-  const handleSubmit = (data: { [key: string]: string }) =>
+  const handleSubmit = (data: { [key: string]: string }) => {
+    setLoading(true)
+
     Request(createApiRoute('/leveled', 2), {
       query: {
         key: leveledSettings?.steam_api_key,
@@ -61,8 +65,10 @@ const Leveled: NextPage = () => {
         return Toast({ type: EToastType.ERROR, message: data.message })
       }
 
+      setLoading(false)
       setLeveledData(data)
     })
+  }
 
   return (
     <div className="h-screen flex flex-col justify-between">
@@ -156,13 +162,20 @@ const Leveled: NextPage = () => {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <button className="h-10 w-full font-semibold text-white bg-indigo-600 hover:bg-indigo-500">
-                    Calculate!
+                  <button
+                    className={`h-10 w-full font-semibold text-white ${
+                      !loading
+                        ? 'bg-indigo-600 hover:bg-indigo-500'
+                        : 'bg-indigo-600/50 cursor-not-allowed'
+                    }`}
+                    disabled={loading}
+                  >
+                    Calculate
                   </button>
                 </div>
               </Form>
             </div>
-            <div className="w-full flex flex-col px-5 py-4 border border-zinc-400/20 dark:border-zinc-800/20 bg-zinc-100 dark:bg-zinc-700 space-y-5">
+            <div className="w-full relative flex flex-col px-5 py-4 border border-zinc-400/20 dark:border-zinc-800/20 bg-zinc-100 dark:bg-zinc-700 space-y-5">
               <div className="h-16 flex justify-between items-center mx-4 sm:mx-10">
                 <div className="scale-125">
                   <Tooltip content={tooltipWithLevelXP(leveledData?.xp)}>
@@ -226,6 +239,15 @@ const Leveled: NextPage = () => {
                   </span>
                 </div>
               </div>
+              {loading && (
+                <div className="absolute inset-0 -top-5 z-10">
+                  <div className="w-full h-full flex bg-zinc-300/80 dark:bg-zinc-700/80">
+                    <div className="m-auto">
+                      <Loader loading={loading} color="rgb(79 70 229)" />
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
