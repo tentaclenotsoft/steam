@@ -34,6 +34,7 @@ const Home: NextPage = () => {
     setIndex(next)
     setProject(ProjectPages[next])
   }
+
   const movePrevious = () => {
     let previous = index
 
@@ -51,7 +52,7 @@ const Home: NextPage = () => {
     <div className="h-screen flex">
       <div className="m-auto">
         {mounted && (
-          <div className="flex flex-col space-y-10">
+          <div className="flex flex-col">
             <div className="flex space-x-3">
               <button
                 className="text-5xl font-extrabold"
@@ -66,7 +67,21 @@ const Home: NextPage = () => {
                 <AiFillCaretRight className="hover:text-zinc-600 dark:hover:text-zinc-300" />
               </button>
             </div>
-            <div className="mx-auto drop-shadow scale-150">
+            <div className="h-full flex justify-center mt-1 space-x-1">
+              {Array(ProjectPages.length)
+                .fill(null)
+                .map((_, indicatorIndex) => (
+                  <div
+                    key={indicatorIndex}
+                    className={`w-2 h-2 ${
+                      index === indicatorIndex
+                        ? 'bg-zinc-800 dark:bg-zinc-50'
+                        : 'bg-zinc-400'
+                    }`}
+                  />
+                ))}
+            </div>
+            <div className="mx-auto mt-10 drop-shadow scale-150">
               <SwitchTheme />
             </div>
           </div>
