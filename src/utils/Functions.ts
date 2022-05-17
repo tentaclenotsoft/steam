@@ -2,10 +2,7 @@ import { load } from 'cheerio'
 import SteamID from 'steamid'
 import XML2JS from 'xml2js'
 
-import {
-  parseSteamProfileURL,
-  totalXPFromLevel
-} from '.'
+import { parseSteamProfileURL, totalXPFromLevel } from '.'
 import {
   IAppDetails,
   IAppDetailsResponse,
@@ -125,11 +122,14 @@ const Leveled = ({
   max_level: maxLevel
 }: ILeveledOptions) => {
   if (!key) throw new Error('Provide a valid steam API key')
+  if (!dreamLevel) throw new Error('Provide a valid dream level')
   if (dreamLevel > maxLevel) {
     throw new RangeError(
       'The level of dreams is greater than the maximum level established for calculation'
     )
   }
+  if (!rate && rate !== 0) throw new Error('Provide a valid rate')
+  if (rate < 1) throw new RangeError('The rate is too low')
 
   const steamID = new SteamID(steam_id)
 

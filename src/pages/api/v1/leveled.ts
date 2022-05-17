@@ -15,7 +15,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
             key,
             steam_id,
             dream_level: +dream_level,
-            rate: +rate,
+            rate: rate && +rate,
             max_level: MAX_LEVEL
           } as ILeveledOptions)
         )
