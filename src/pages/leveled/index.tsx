@@ -48,9 +48,23 @@ const Leveled: NextPage = () => {
     )
   )
 
+  const [inputValidValue, setInputValidValue] = useState({
+    dreamLevel: '',
+    rate: ''
+  })
+
+  const inputValueValidator = (event, field) =>
+    setInputValidValue((prevObject) => ({
+      ...prevObject,
+      [field]: event.target.validity.valid
+        ? event.target.value
+        : inputValidValue[field]
+    }))
+
   const [leveledData, setLeveledData] = useState<ILeveledResponse>(
     {} as ILeveledResponse
   )
+
   const handleSubmit = (data: { [key: string]: string }) => {
     setLoading(true)
 
@@ -150,6 +164,11 @@ const Leveled: NextPage = () => {
                       className="h-8 px-2 text-zinc-600/90 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-600/75 outline-none"
                       type="text"
                       placeholder="Your dream level"
+                      pattern="[0-9]*"
+                      onInput={(event) =>
+                        inputValueValidator(event, 'dreamLevel')
+                      }
+                      value={inputValidValue.dreamLevel}
                     />
                   </div>
                   <div className="flex flex-col">
@@ -159,6 +178,9 @@ const Leveled: NextPage = () => {
                       className="h-8 px-2 text-zinc-600/90 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-600/75 outline-none"
                       type="text"
                       placeholder="Rate of purchase"
+                      pattern="[0-9]*"
+                      onInput={(event) => inputValueValidator(event, 'rate')}
+                      value={inputValidValue.rate}
                     />
                   </div>
                 </div>
