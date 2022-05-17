@@ -36,11 +36,12 @@ const Identified: NextPage = () => {
         value: data.user
       }
     }).then((data) => {
+      setLoading(false)
+
       if (data.message) {
         return Toast({ type: EToastType.ERROR, message: data.message })
       }
 
-      setLoading(false)
       setUserData(data)
     })
   }
