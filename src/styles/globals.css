@@ -129,8 +129,7 @@
   font-family: 'Motiva Sans';
   font-style: normal;
   font-weight: 300;
-  src: local('Motiva Sans'),
-    url('/fonts/Motiva-Sans-Light.woff') format('woff');
+  src: local('Motiva Sans'), url('/fonts/Motiva-Sans-Light.woff') format('woff');
 }
 
 @font-face {
@@ -145,8 +144,7 @@
   font-family: 'Motiva Sans';
   font-style: normal;
   font-weight: 700;
-  src: local('Motiva Sans'),
-    url('/fonts/Motiva-Sans-Bold.woff') format('woff');
+  src: local('Motiva Sans'), url('/fonts/Motiva-Sans-Bold.woff') format('woff');
 }
 
 @font-face {
@@ -161,8 +159,7 @@
   font-family: 'Motiva Sans';
   font-style: normal;
   font-weight: 900;
-  src: local('Motiva Sans'),
-    url('/fonts/Motiva-Sans-Black.woff') format('woff');
+  src: local('Motiva Sans'), url('/fonts/Motiva-Sans-Black.woff') format('woff');
 }
 
 @tailwind base;
