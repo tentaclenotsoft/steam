@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { BiUpArrowAlt } from 'react-icons/bi'
 
-import type { NextPage } from 'next'
+import type { GetStaticPropsContext, NextPage } from 'next'
+import { useTranslations } from 'next-intl'
 
 import { Form } from '@unform/web'
 
@@ -16,6 +17,7 @@ import { MAX_LEVEL } from '@utils/Constants'
 import { EToastType } from '@utils/Enums'
 
 const Table: NextPage = () => {
+  const t = useTranslations('Leveled.Table')
   const [showButton, setShowButton] = useState(false)
 
   useEffect(
@@ -61,10 +63,10 @@ const Table: NextPage = () => {
                 name="level"
                 className="w-full h-8 px-2 text-zinc-600/90 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-600/75 outline-none"
                 type="text"
-                placeholder="Level"
+                placeholder={t('placeholder')}
               />
               <button className="px-2 font-semibold text-white bg-indigo-600 hover:bg-indigo-500">
-                Search
+                {t('search')}
               </button>
             </div>
           </Form>
@@ -110,5 +112,11 @@ const Table: NextPage = () => {
     </div>
   )
 }
+
+export const getStaticProps = async ({ locale }: GetStaticPropsContext) => ({
+  props: {
+    messages: (await import(`../../assets/json/locales/${locale}.json`)).default
+  }
+})
 
 export default Table

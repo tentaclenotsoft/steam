@@ -1,5 +1,10 @@
 const MAX_LEVEL = 5299
 
+const Locales = [
+  { locale: 'en', country: 'US', title: 'English' },
+  { locale: 'br', country: 'BR', title: 'Português do Brasil' }
+]
+
 const ProjectPages = [
   {
     title: 'Leveled',
@@ -22,4 +27,4 @@ const SteamHTTP = {
   COMMUNITY: 'https://steamcommunity.com'
 }
 
-export { MAX_LEVEL, ProjectPages, SteamHTTP }
+export { MAX_LEVEL, Locales, ProjectPages, SteamHTTP }

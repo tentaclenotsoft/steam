@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai'
 
 import type { NextPage } from 'next'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import useLocalStorage from 'use-local-storage'
 
@@ -14,6 +16,7 @@ interface IProject {
 }
 
 const Home: NextPage = () => {
+  const { locale } = useRouter()
   const [mounted, setMounted] = useState(false)
   const [project, setProject] = useLocalStorage('project', null as IProject)
   const [index, setIndex] = useState(
@@ -61,7 +64,9 @@ const Home: NextPage = () => {
                 <AiFillCaretLeft className="hover:text-zinc-600 dark:hover:text-zinc-300" />
               </button>
               <h1 className="w-72 md:w-[36rem] text-6xl md:text-7xl text-center font-extrabold hover:text-zinc-600 dark:hover:text-zinc-300 hover:cursor-pointer">
-                <a href={project?.path}>{`Steam ${project?.title}`}</a>
+                <Link
+                  href={`${locale !== 'en' ? locale : ''}${project?.path}`}
+                >{`Steam ${project?.title}`}</Link>
               </h1>
               <button className="text-5xl font-extrabold" onClick={moveNext}>
                 <AiFillCaretRight className="hover:text-zinc-600 dark:hover:text-zinc-300" />

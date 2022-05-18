@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
-import type { NextPage } from 'next'
+import type { GetStaticPropsContext, NextPage } from 'next'
+import { useTranslations } from 'next-intl'
 
 import { Form } from '@unform/web'
 
@@ -14,6 +15,7 @@ import { SteamHTTP } from '@utils/Constants'
 import Request from '@utils/Fetcher'
 
 const Limitished: NextPage = () => {
+  const t = useTranslations('Limitished')
   const [apps, setApps] = useState([])
   const [appNamesList, setAppNamesList] = useState(null)
   const [analyzing, setAnalyzing] = useState(false)
@@ -77,7 +79,7 @@ const Limitished: NextPage = () => {
                   name="app_ids"
                   className="w-full h-8 px-2 text-zinc-600/90 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-600/75 outline-none"
                   type="text"
-                  placeholder="App IDs for analysis"
+                  placeholder={t('placeholder')}
                 />
                 <button
                   className={`h-10 w-full font-semibold text-white ${
@@ -88,8 +90,8 @@ const Limitished: NextPage = () => {
                   disabled={analyzing}
                 >
                   {!analyzing
-                    ? 'Analyze'
-                    : `Analyzing... (${appsInAnalyze.current} of ${appsInAnalyze.total})`}
+                    ? t('analyze')
+                    : t('analyzing', { ...appsInAnalyze })}
                 </button>
               </div>
             </div>
@@ -183,7 +185,7 @@ const Limitished: NextPage = () => {
                     }`}
                     disabled={!readyToCopyList}
                   >
-                    Copy list
+                    {t('copyList')}
                   </button>
                 </CopyToClipboard>
               </div>
@@ -195,5 +197,11 @@ const Limitished: NextPage = () => {
     </div>
   )
 }
+
+export const getStaticProps = async ({ locale }: GetStaticPropsContext) => ({
+  props: {
+    messages: (await import(`../assets/json/locales/${locale}.json`)).default
+  }
+})
 
 export default Limitished

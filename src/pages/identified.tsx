@@ -7,7 +7,8 @@ import {
   RiFileCopyFill
 } from 'react-icons/ri'
 
-import type { NextPage } from 'next'
+import type { GetStaticPropsContext, NextPage } from 'next'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 import { Form } from '@unform/web'
@@ -25,6 +26,7 @@ import { EToastType } from '@utils/Enums'
 import Request from '@utils/Fetcher'
 
 const Identified: NextPage = () => {
+  const t = useTranslations('Identified')
   const checkboxIconSize = 24
   const [loading, setLoading] = useState(false)
   const [userData, setUserData] = useState({} as IUserData)
@@ -58,7 +60,7 @@ const Identified: NextPage = () => {
                   name="user"
                   className="w-full h-8 px-2 text-zinc-600/90 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-600/75 outline-none"
                   type="text"
-                  placeholder="Steam ID, custom URL or profile link"
+                  placeholder={t('placeholder')}
                 />
                 <div className="mt-4">
                   <button
@@ -69,7 +71,7 @@ const Identified: NextPage = () => {
                     }`}
                     disabled={loading}
                   >
-                    Find
+                    {t('find')}
                   </button>
                 </div>
               </div>
@@ -90,7 +92,9 @@ const Identified: NextPage = () => {
             </div>
             {userData.limitations?.community_ban ? (
               <div className="h-5 text-sm text-center text-white bg-red-500">
-                <span className="animate-pulse">Community Banned</span>
+                <span className="animate-pulse">
+                  {t('user.limitations.communityBan')}
+                </span>
               </div>
             ) : (
               <div className="h-5 bg-zinc-100 dark:bg-zinc-700" />
@@ -151,7 +155,7 @@ const Identified: NextPage = () => {
                     <div className="w-full flex flex-col space-y-2">
                       <div className="flex flex-col">
                         <label className="text-zinc-500/80 dark:text-zinc-300/75">
-                          Real name
+                          {t('user.realname')}
                         </label>
                         <span className="h-8 p-1 bg-zinc-300 dark:bg-zinc-800/40">
                           {userData.realname?.length > 43
@@ -161,7 +165,7 @@ const Identified: NextPage = () => {
                       </div>
                       <div className="flex flex-col">
                         <label className="text-zinc-500/80 dark:text-zinc-300/75">
-                          Location
+                          {t('user.location')}
                         </label>
                         <span className="h-8 p-1 bg-zinc-300 dark:bg-zinc-800/40">
                           {userData.location}
@@ -175,7 +179,7 @@ const Identified: NextPage = () => {
                   <div className="flex flex-col sm:flex-row mt-2 sm:space-x-2 space-y-2 sm:space-y-0">
                     <div className="w-full flex flex-col">
                       <label className="text-zinc-500/80 dark:text-zinc-300/75">
-                        Status
+                        {t('user.status')}
                       </label>
                       <span className="h-8 p-1 bg-zinc-300 dark:bg-zinc-800/40">
                         {userData.status}
@@ -183,7 +187,7 @@ const Identified: NextPage = () => {
                     </div>
                     <div className="w-full flex flex-col">
                       <label className="text-zinc-500/80 dark:text-zinc-300/75">
-                        Profile privacy
+                        {t('user.profilePrivacy')}
                       </label>
                       <span className="h-8 p-1 bg-zinc-300 dark:bg-zinc-800/40">
                         {userData.privacy}
@@ -203,7 +207,7 @@ const Identified: NextPage = () => {
                       )}
                     </span>
                     <span className="flex space-x-1.5">
-                      <label>Trade Ban</label>
+                      <label>{t('user.limitations.tradeBan')}</label>
                       {userData.limitations?.trade_ban ? (
                         <RiCheckboxLine
                           color="rgb(220, 38, 38)"
@@ -214,7 +218,7 @@ const Identified: NextPage = () => {
                       )}
                     </span>
                     <span className="flex space-x-1.5">
-                      <label>Limited</label>
+                      <label>{t('user.limitations.limited')}</label>
                       {userData.limitations?.limited ? (
                         <RiCheckboxLine
                           color="rgb(220, 38, 38)"
@@ -227,7 +231,7 @@ const Identified: NextPage = () => {
                   </div>
                   <div className="flex flex-col text-center">
                     <label className="text-zinc-500/80 dark:text-zinc-300/75">
-                      Member since
+                      {t('user.memberSince')}
                     </label>
                     <span className="h-8 p-1 bg-zinc-300 dark:bg-zinc-800/40">
                       {userData.member_since}
@@ -297,5 +301,11 @@ const Identified: NextPage = () => {
     </div>
   )
 }
+
+export const getStaticProps = async ({ locale }: GetStaticPropsContext) => ({
+  props: {
+    messages: (await import(`../assets/json/locales/${locale}.json`)).default
+  }
+})
 
 export default Identified

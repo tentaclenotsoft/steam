@@ -1,6 +1,7 @@
 import React, { EffectCallback, useEffect, useState } from 'react'
 
-import type { NextPage } from 'next'
+import type { GetStaticPropsContext, NextPage } from 'next'
+import { useTranslations } from 'next-intl'
 
 import { Form } from '@unform/web'
 import useLocalStorage from 'use-local-storage'
@@ -18,6 +19,7 @@ import { EToastType } from '@utils/Enums'
 import Request from '@utils/Fetcher'
 
 const Leveled: NextPage = () => {
+  const t = useTranslations('Leveled')
   const [leveledSettings, setLeveledSettings] = useLocalStorage(
     'leveled/settings',
     {} as LeveledSettings
@@ -95,7 +97,9 @@ const Leveled: NextPage = () => {
         <div className="w-96 sm:w-fit mx-5 sm:m-auto space-y-3 drop-shadow-md">
           <div>
             <div className="px-5 py-2 bg-zinc-500 dark:bg-zinc-800">
-              <span className="text-zinc-50 font-semibold">Settings</span>
+              <span className="text-zinc-50 font-semibold">
+                {t('settings.title')}
+              </span>
             </div>
             <div className="px-5 py-4 border border-zinc-400/20 dark:border-zinc-800/20 bg-zinc-100 dark:bg-zinc-700">
               <div className="lg:flex lg:space-x-4 space-y-3 lg:space-y-0">
@@ -108,13 +112,13 @@ const Leveled: NextPage = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Get your key here
+                      {t('settings.webApiKey.getYourKeyHere')}
                     </a>
                   </div>
                   <input
                     className={`w-full lg:w-80 h-8 px-2 text-zinc-600/90 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-600/75 outline-none ${inputOutline}`}
                     type={inputType}
-                    placeholder="Your key (stored in your browser only)"
+                    placeholder={t('settings.webApiKey.placeholder')}
                     autoComplete="off"
                     onBlur={(event) =>
                       setInputType(
@@ -135,11 +139,11 @@ const Leveled: NextPage = () => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="mb-1">User</label>
+                  <label className="mb-1">{t('settings.user.label')}</label>
                   <input
                     className="w-full lg:w-80 h-8 px-2 text-zinc-600/90 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-600/75 outline-none"
                     type="text"
-                    placeholder="Steam ID, custom URL or profile link"
+                    placeholder={t('settings.user.placeholder')}
                     onChange={(event) =>
                       setLeveledSettings(
                         mergeLeveledSettings({
@@ -158,12 +162,12 @@ const Leveled: NextPage = () => {
               <Form onSubmit={handleSubmit}>
                 <div className="sm:flex lg:flex-col sm:space-x-4 lg:space-x-0 space-y-4 sm:space-y-0 lg:space-y-4">
                   <div className="flex flex-col">
-                    <label className="mb-1">Dream level</label>
+                    <label className="mb-1">{t('dreamLevel.label')}</label>
                     <Input
                       name="dream_level"
                       className="h-8 px-2 text-zinc-600/90 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-600/75 outline-none"
                       type="text"
-                      placeholder="Your dream level"
+                      placeholder={t('dreamLevel.placeholder')}
                       pattern="[0-9]*"
                       onInput={(event) =>
                         inputValueValidator(event, 'dreamLevel')
@@ -172,12 +176,12 @@ const Leveled: NextPage = () => {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <label className="mb-1">Rate</label>
+                    <label className="mb-1">{t('rate.label')}</label>
                     <Input
                       name="rate"
                       className="h-8 px-2 text-zinc-600/90 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-600/75 outline-none"
                       type="text"
-                      placeholder="Rate of purchase"
+                      placeholder={t('rate.placeholder')}
                       pattern="[0-9]*"
                       onInput={(event) => inputValueValidator(event, 'rate')}
                       value={inputValidValue.rate}
@@ -193,7 +197,7 @@ const Leveled: NextPage = () => {
                     }`}
                     disabled={loading}
                   >
-                    Calculate
+                    {t('calculate')}
                   </button>
                 </div>
               </Form>
@@ -206,7 +210,9 @@ const Leveled: NextPage = () => {
                   </Tooltip>
                 </div>
                 <div className="flex flex-col items-center text-center font-light -space-y-1">
-                  <span className="text-zinc-400 text-xs">XP needed</span>
+                  <span className="text-zinc-400 text-xs">
+                    {t('result.xpNeeded')}
+                  </span>
                   <span className="text-2xl">
                     {numberFormatter(leveledData.xp_needed || 0)}
                   </span>
@@ -223,26 +229,32 @@ const Leveled: NextPage = () => {
               </div>
               <div className="h-full grid grid-cols-2 sm:grid-cols-3">
                 <div className="flex flex-col m-auto items-center text-center">
-                  <span className="text-zinc-400 text-sm">Sets needed</span>
+                  <span className="text-zinc-400 text-sm">
+                    {t('result.setsNeeded')}
+                  </span>
                   <span className="text-xl">
                     {numberFormatter(leveledData.sets_needed || 0)}
                   </span>
                 </div>
                 <div className="flex flex-col m-auto items-center text-center">
-                  <span className="text-zinc-400 text-sm">Keys needed</span>
+                  <span className="text-zinc-400 text-sm">
+                    {t('result.keysNeeded')}
+                  </span>
                   <span className="text-xl">
                     {numberFormatter(+leveledData.keys_needed?.toFixed(1) || 0)}
                   </span>
                 </div>
                 <div className="flex flex-col m-auto items-center text-center">
-                  <span className="text-zinc-400 text-sm">Coupons</span>
+                  <span className="text-zinc-400 text-sm">
+                    {t('result.coupons')}
+                  </span>
                   <span className="text-xl">
                     {numberFormatter(+leveledData.coupons || 0)}
                   </span>
                 </div>
                 <div className="flex flex-col m-auto items-center text-center sm:col-span-2">
                   <span className="text-zinc-400 text-sm">
-                    Emoticons & Background
+                    {t('result.emoticonsAndBackground')}
                   </span>
                   <span className="text-xl">
                     {numberFormatter(
@@ -251,7 +263,9 @@ const Leveled: NextPage = () => {
                   </span>
                 </div>
                 <div className="flex flex-col m-auto items-center text-center">
-                  <span className="text-zinc-400 text-sm">Friends</span>
+                  <span className="text-zinc-400 text-sm">
+                    {t('result.friends')}
+                  </span>
                   <span className="text-xl">
                     {numberFormatter(leveledData.friends || 0)}
                     <span className="text-zinc-400/50 dark:text-zinc-500">
@@ -279,5 +293,11 @@ const Leveled: NextPage = () => {
     </div>
   )
 }
+
+export const getStaticProps = async ({ locale }: GetStaticPropsContext) => ({
+  props: {
+    messages: (await import(`../../assets/json/locales/${locale}.json`)).default
+  }
+})
 
 export default Leveled

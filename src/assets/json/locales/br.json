@@ -1,0 +1,60 @@
+{
+  "Leveled": {
+    "settings": {
+      "title": "Configurações",
+      "webApiKey": {
+        "getYourKeyHere": "Pegue sua chave aqui",
+        "placeholder": "Sua chave (armazenada apenas em seu navegador)"
+      },
+      "user": {
+        "label": "Usuário",
+        "placeholder": "Steam ID, URL personalizado ou link de perfil"
+      }
+    },
+    "dreamLevel": {
+      "label": "Nível dos sonhos",
+      "placeholder": "Seu nível dos sonhos"
+    },
+    "rate": {
+      "label": "Taxa",
+      "placeholder": "Taxa de compra"
+    },
+    "calculate": "Calcular",
+    "result": {
+      "xpNeeded": "XP necessário",
+      "setsNeeded": "Conjuntos necessários",
+      "keysNeeded": "Chaves necessárias",
+      "coupons": "Cupons",
+      "emoticonsAndBackground": "Emoticons e Planos de fundo",
+      "friends": "Amigos"
+    },
+    "Table": {
+      "search": "Procurar",
+      "placeholder": "Nível"
+    }
+  },
+
+  "Limitished": {
+    "analyze": "Analisar",
+    "analyzing": "Analisando... ({current} of {total})",
+    "placeholder": "IDs de aplicativos para análise",
+    "copyList": "Copiar lista"
+  },
+
+  "Identified": {
+    "find": "Encontrar",
+    "placeholder": "Steam ID, URL personalizado ou link de perfil",
+    "user": {
+      "realname": "Nome real",
+      "location": "Localização",
+      "status": "Status",
+      "profilePrivacy": "Privacidade do Perfil",
+      "limitations": {
+        "tradeBan": "Banido de trocar",
+        "limited": "Limitado",
+        "communityBan": "Banido da comunidade"
+      },
+      "memberSince": "Membro desde"
+    }
+  }
+}

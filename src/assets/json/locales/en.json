@@ -1,0 +1,60 @@
+{
+  "Leveled": {
+    "settings": {
+      "title": "Settings",
+      "webApiKey": {
+        "getYourKeyHere": "Get your key here",
+        "placeholder": "Your key (stored in your browser only)"
+      },
+      "user": {
+        "label": "User",
+        "placeholder": "Steam ID, custom URL or profile link"
+      }
+    },
+    "dreamLevel": {
+      "label": "Dream level",
+      "placeholder": "Your dream level"
+    },
+    "rate": {
+      "label": "Rate",
+      "placeholder": "Rate of purchase"
+    },
+    "calculate": "Calculate",
+    "result": {
+      "xpNeeded": "XP needed",
+      "setsNeeded": "Sets needed",
+      "keysNeeded": "Keys needed",
+      "coupons": "Coupons",
+      "emoticonsAndBackground": "Emoticons & Background",
+      "friends": "Friends"
+    },
+    "Table": {
+      "search": "Search",
+      "placeholder": "Level"
+    }
+  },
+
+  "Limitished": {
+    "analyze": "Analyze",
+    "analyzing": "Analyzing... ({current} of {total})",
+    "placeholder": "App IDs for analysis",
+    "copyList": "Copy list"
+  },
+
+  "Identified": {
+    "find": "Find",
+    "placeholder": "Steam ID, custom URL or profile link",
+    "user": {
+      "realname": "Real name",
+      "location": "Location",
+      "status": "Status",
+      "profilePrivacy": "Profile privacy",
+      "limitations": {
+        "tradeBan": "Trade Ban",
+        "limited": "Limited",
+        "communityBan": "Community Banned"
+      },
+      "memberSince": "Member since"
+    }
+  }
+}
