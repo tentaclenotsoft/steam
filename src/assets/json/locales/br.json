@@ -1,4 +1,8 @@
 {
+  "NotFound": {
+    "title": "Página não encontrada.",
+    "goBackHome": "Volto para a página inicial"
+  },
   "Footer": {
     "allRightReserved": "Todos os direitos reservados",
     "siteHasNoAffiliation": "Este site não é afiliado à Valve, Steam ou a nenhum de seus parceiros.",
