@@ -85,7 +85,8 @@ const Identified = async (value: string) => {
       if (!profile) {
         throw new APIError(
           'profileNotFound',
-          'The specified profile could not be found'
+          'The specified profile could not be found',
+          400
         )
       }
 
@@ -125,23 +126,24 @@ const Leveled = ({
   rate,
   max_level: maxLevel
 }: ILeveledOptions) => {
-  if (!key) throw new APIError('invalidKey', 'Provide a valid steam API key')
+  if (!key)
+    throw new APIError('invalidKey', 'Provide a valid steam API key', 400)
   if (!dreamLevel)
-    throw new APIError('invalidDreamLevel', 'Provide a valid dream level')
-  if (dreamLevel > maxLevel) {
+    throw new APIError('invalidDreamLevel', 'Provide a valid dream level', 400)
+  if (dreamLevel > maxLevel)
     throw new APIError(
       'dreamLevelHigherThanMaximumLevel',
-      'The level of dreams is greater than the maximum level established for calculation'
+      'The level of dreams is greater than the maximum level established for calculation',
+      400
     )
-  }
   if (!rate && rate !== 0)
-    throw new APIError('invalidRate', 'Provide a valid rate')
-  if (rate < 1) throw new APIError('rateTooLow', 'The rate is too low')
+    throw new APIError('invalidRate', 'Provide a valid rate', 400)
+  if (rate < 1) throw new APIError('rateTooLow', 'The rate is too low', 400)
 
   const steamID = new SteamID(steam_id)
 
   if (!steamID.isValid())
-    throw new APIError('invalidSteamId', 'Provide a valid Steam ID')
+    throw new APIError('invalidSteamId', 'Provide a valid Steam ID', 400)
 
   return Request(`${SteamHTTP.API}/IPlayerService/GetBadges/v1`, {
     query: {
@@ -155,7 +157,8 @@ const Leveled = ({
       if (dreamLevel <= level)
         throw new APIError(
           'dreamLevelLessThanOrEqual',
-          'Dream level is less than or equal to current level'
+          'Dream level is less than or equal to current level',
+          400
         )
 
       const currentLevelXP = +(data.player_xp.toString().slice(0, -2) + '00')

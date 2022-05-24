@@ -43,10 +43,9 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
             max_level: MAX_LEVEL
           } as ILeveledOptions)
         )
-        response.status(200)
       } catch (error) {
-        const { code, message } = error as APIError
-        response.status(500).json({ code, message })
+        const { code, message, statusCode } = error as APIError
+        response.status(statusCode).json({ code, message })
       }
       break
     default:
