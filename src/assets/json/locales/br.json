@@ -1,4 +1,9 @@
 {
+  "Footer": {
+    "allRightReserved": "Todos os direitos reservados",
+    "siteHasNoAffiliation": "Este site não é afiliado à Valve, Steam ou a nenhum de seus parceiros.",
+    "buyMeACoffee": "Compre-me um café!"
+  },
   "Leveled": {
     "settings": {
       "title": "Configurações",

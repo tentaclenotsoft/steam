@@ -7,11 +7,13 @@ import {
   RiFileCopyFill
 } from 'react-icons/ri'
 
-import type { GetStaticPropsContext, NextPage } from 'next'
+import type { GetStaticPropsContext } from 'next'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 import { Form } from '@unform/web'
+import pick from 'lodash/pick'
+import { NextPageWithMessages } from 'types'
 
 import Input from '@components/Input'
 import SteamLevels from '@components/leveled/SteamLevels'
@@ -24,7 +26,7 @@ import { SteamHTTP } from '@utils/Constants'
 import { EToastType } from '@utils/Enums'
 import Request from '@utils/Fetcher'
 
-const Identified: NextPage = () => {
+const Identified: NextPageWithMessages = () => {
   const t = useTranslations('Identified')
   const checkboxIconSize = 24
   const [loading, setLoading] = useState(false)
@@ -305,9 +307,14 @@ const Identified: NextPage = () => {
   )
 }
 
+Identified.messages = ['Identified', ...PageLayout.messages]
+
 export const getStaticProps = async ({ locale }: GetStaticPropsContext) => ({
   props: {
-    messages: (await import(`../assets/json/locales/${locale}.json`)).default
+    messages: pick(
+      await import(`../assets/json/locales/${locale}.json`),
+      Identified.messages
+    )
   }
 })
 

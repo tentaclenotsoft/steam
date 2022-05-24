@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
-import type { GetStaticPropsContext, NextPage } from 'next'
+import type { GetStaticPropsContext } from 'next'
 import { useTranslations } from 'next-intl'
 
 import { Form } from '@unform/web'
+import pick from 'lodash/pick'
+import { NextPageWithMessages } from 'types'
 
 import Input from '@components/Input'
 import PageLayout from '@components/PageLayout'
@@ -13,7 +15,7 @@ import { createApiRoute } from '@utils'
 import { SteamHTTP } from '@utils/Constants'
 import Request from '@utils/Fetcher'
 
-const Limitished: NextPage = () => {
+const Limitished: NextPageWithMessages = () => {
   const t = useTranslations('Limitished')
   const [apps, setApps] = useState([])
   const [appNamesList, setAppNamesList] = useState(null)
@@ -198,9 +200,14 @@ const Limitished: NextPage = () => {
   )
 }
 
+Limitished.messages = ['Limitished', ...PageLayout.messages]
+
 export const getStaticProps = async ({ locale }: GetStaticPropsContext) => ({
   props: {
-    messages: (await import(`../assets/json/locales/${locale}.json`)).default
+    messages: pick(
+      await import(`../assets/json/locales/${locale}.json`),
+      Limitished.messages
+    )
   }
 })
 

@@ -1,9 +1,11 @@
 import React, { EffectCallback, useEffect, useState } from 'react'
 
-import type { GetStaticPropsContext, NextPage } from 'next'
+import type { GetStaticPropsContext } from 'next'
 import { useTranslations } from 'next-intl'
 
 import { Form } from '@unform/web'
+import pick from 'lodash/pick'
+import { NextPageWithMessages } from 'types'
 import useLocalStorage from 'use-local-storage'
 
 import Input from '@components/Input'
@@ -17,7 +19,7 @@ import { createApiRoute, numberFormatter } from '@utils'
 import { EToastType } from '@utils/Enums'
 import Request from '@utils/Fetcher'
 
-const Leveled: NextPage = () => {
+const Leveled: NextPageWithMessages = () => {
   const t = useTranslations('Leveled')
   const [leveledSettings, setLeveledSettings] = useLocalStorage(
     'leveled/settings',
@@ -299,9 +301,14 @@ const Leveled: NextPage = () => {
   )
 }
 
+Leveled.messages = ['Leveled', ...PageLayout.messages]
+
 export const getStaticProps = async ({ locale }: GetStaticPropsContext) => ({
   props: {
-    messages: (await import(`../../assets/json/locales/${locale}.json`)).default
+    messages: pick(
+      await import(`../../assets/json/locales/${locale}.json`),
+      Leveled.messages
+    )
   }
 })
 

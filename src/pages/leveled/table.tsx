@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { BiUpArrowAlt } from 'react-icons/bi'
 
-import type { GetStaticPropsContext, NextPage } from 'next'
+import type { GetStaticPropsContext } from 'next'
 import { useTranslations } from 'next-intl'
 
 import { Form } from '@unform/web'
+import pick from 'lodash/pick'
+import { NextPageWithMessages } from 'types'
 
 import SteamLevelsTable from '@assets/json/steam-levels-table.json'
 import Input from '@components/Input'
@@ -15,7 +17,7 @@ import { numberFormatter } from '@utils'
 import { MAX_LEVEL } from '@utils/Constants'
 import { EToastType } from '@utils/Enums'
 
-const Table: NextPage = () => {
+const Table: NextPageWithMessages = () => {
   const t = useTranslations('Leveled.Table')
   const [showButton, setShowButton] = useState(false)
 
@@ -115,9 +117,14 @@ const Table: NextPage = () => {
   )
 }
 
+Table.messages = ['Leveled.Table', ...PageLayout.messages]
+
 export const getStaticProps = async ({ locale }: GetStaticPropsContext) => ({
   props: {
-    messages: (await import(`../../assets/json/locales/${locale}.json`)).default
+    messages: pick(
+      await import(`../../assets/json/locales/${locale}.json`),
+      Table.messages
+    )
   }
 })
 

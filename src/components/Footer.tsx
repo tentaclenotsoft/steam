@@ -1,10 +1,14 @@
 import React from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import KofiButton from 'kofi-button'
 
 import SwitchLocale from './SwitchLocale'
 
 const Footer = ({ hoverTextStyle }: { hoverTextStyle: string }) => {
+  const t = useTranslations('Footer')
+
   return (
     <div className="bg-gradient-to-t from-zinc-100 dark:from-zinc-700 to-transparent">
       <div className="mx-5">
@@ -17,15 +21,14 @@ const Footer = ({ hoverTextStyle }: { hoverTextStyle: string }) => {
             >
               Tentaclesoft
             </a>
-            . All right reserved
+            . {t('allRightReserved')}
           </span>
           <span className="text-zinc-500 dark:text-zinc-400 text-xs">
-            This site is not affiliated with Valve, Steam, or any of their
-            partners.
+            {t('siteHasNoAffiliation')}
           </span>
           <div className="my-3">
             <KofiButton
-              title="Buy me a coffee!"
+              title={t('buyMeACoffee')}
               color="rgb(153, 153, 153, 0.3)"
               kofiID="I2I0BJLVQ"
             />
@@ -36,5 +39,7 @@ const Footer = ({ hoverTextStyle }: { hoverTextStyle: string }) => {
     </div>
   )
 }
+
+Footer.messages = ['Footer']
 
 export default Footer

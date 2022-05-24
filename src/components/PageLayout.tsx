@@ -21,4 +21,6 @@ const PageLayout = ({
   )
 }
 
+PageLayout.messages = [...Footer.messages]
+
 export default PageLayout
