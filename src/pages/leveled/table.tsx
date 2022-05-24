@@ -36,12 +36,12 @@ const Table: NextPage = () => {
     if (level < 1) {
       return Toast({
         type: EToastType.ERROR,
-        message: 'The set level is too low'
+        message: t('error.levelTooLow')
       })
     } else if (level > MAX_LEVEL) {
       return Toast({
         type: EToastType.ERROR,
-        message: `Level ${level} exceeds the maximum Steam level`
+        message: t('error.levelExceedsMaximumLevel', { level })
       })
     }
 

@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import type { APIError } from '@utils/Error'
 import { Identified } from '@utils/Functions'
 
 export default async (request: NextApiRequest, response: NextApiResponse) => {
@@ -10,8 +11,8 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
       try {
         response.status(200).json(await Identified(value as string))
       } catch (error) {
-        const { message } = error as Error
-        response.status(500).json({ message })
+        const { code, message } = error as APIError
+        response.status(500).json({ code, message })
       }
       break
     default:

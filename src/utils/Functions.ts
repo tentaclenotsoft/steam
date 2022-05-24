@@ -12,6 +12,7 @@ import {
 } from '../interfaces'
 import { SteamHTTP } from './Constants'
 import { EPrivacyState } from './Enums'
+import { APIError } from './Error'
 import Request from './Fetcher'
 
 const getAppDetails = (appID: number) =>
@@ -82,7 +83,10 @@ const Identified = async (value: string) => {
     )
     .then(({ profile }) => {
       if (!profile) {
-        throw new Error('The specified profile could not be found')
+        throw new APIError(
+          'profileNotFound',
+          'The specified profile could not be found'
+        )
       }
 
       const steamID = new SteamID(profile.steamID64)
@@ -121,19 +125,23 @@ const Leveled = ({
   rate,
   max_level: maxLevel
 }: ILeveledOptions) => {
-  if (!key) throw new Error('Provide a valid steam API key')
-  if (!dreamLevel) throw new Error('Provide a valid dream level')
+  if (!key) throw new APIError('invalidKey', 'Provide a valid steam API key')
+  if (!dreamLevel)
+    throw new APIError('invalidDreamLevel', 'Provide a valid dream level')
   if (dreamLevel > maxLevel) {
-    throw new RangeError(
+    throw new APIError(
+      'dreamLevelHigherThanMaximumLevel',
       'The level of dreams is greater than the maximum level established for calculation'
     )
   }
-  if (!rate && rate !== 0) throw new Error('Provide a valid rate')
-  if (rate < 1) throw new RangeError('The rate is too low')
+  if (!rate && rate !== 0)
+    throw new APIError('invalidRate', 'Provide a valid rate')
+  if (rate < 1) throw new APIError('rateTooLow', 'The rate is too low')
 
   const steamID = new SteamID(steam_id)
 
-  if (!steamID.isValid()) throw new Error('Provide a valid Steam ID')
+  if (!steamID.isValid())
+    throw new APIError('invalidSteamId', 'Provide a valid Steam ID')
 
   return Request(`${SteamHTTP.API}/IPlayerService/GetBadges/v1`, {
     query: {
@@ -145,7 +153,8 @@ const Leveled = ({
       const level: number = data.player_level
 
       if (dreamLevel <= level)
-        throw new RangeError(
+        throw new APIError(
+          'dreamLevelLessThanOrEqual',
           'Dream level is less than or equal to current level'
         )
 

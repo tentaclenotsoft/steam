@@ -40,7 +40,10 @@ const Identified: NextPage = () => {
       setLoading(false)
 
       if (data.message) {
-        return Toast({ type: EToastType.ERROR, message: data.message })
+        return Toast({
+          type: EToastType.ERROR,
+          message: t(`error.${data.code}`)
+        })
       }
 
       setUserData(data)

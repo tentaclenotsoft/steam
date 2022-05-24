@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 import { ILeveledOptions } from '@interfaces'
 import { MAX_LEVEL } from '@utils/Constants'
+import type { APIError } from '@utils/Error'
 import { Leveled } from '@utils/Functions'
 
 export default async (request: NextApiRequest, response: NextApiResponse) => {
@@ -20,8 +21,8 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
           } as ILeveledOptions)
         )
       } catch (error) {
-        const { message } = error as Error
-        response.status(500).json({ message })
+        const { code, message } = error as APIError
+        response.status(500).json({ code, message })
       }
       break
     default:

@@ -4,6 +4,7 @@ import SteamID from 'steamid'
 
 import { ILeveledOptions, IUserData } from '@interfaces'
 import { MAX_LEVEL } from '@utils/Constants'
+import type { APIError } from '@utils/Error'
 import { Identified, Leveled } from '@utils/Functions'
 
 export default async (request: NextApiRequest, response: NextApiResponse) => {
@@ -44,8 +45,8 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
         )
         response.status(200)
       } catch (error) {
-        const { message } = error as Error
-        response.status(500).json({ message })
+        const { code, message } = error as APIError
+        response.status(500).json({ code, message })
       }
       break
     default:

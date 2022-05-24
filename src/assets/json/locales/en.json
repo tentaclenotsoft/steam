@@ -28,19 +28,30 @@
       "emoticonsAndBackground": "Emoticons & Background",
       "friends": "Friends"
     },
+    "error": {
+      "invalidKey": "Provide a valid steam API key",
+      "invalidSteamId": "Provide a valid Steam ID",
+      "invalidDreamLevel": "Provide a valid dream level",
+      "invalidRate": "Provide a valid rate",
+      "dreamLevelHigherThanMaximumLevel": "The level of dreams is greater than the maximum level established for calculation",
+      "dreamLevelLessThanOrEqual": "Dream level is less than or equal to current level",
+      "rateTooLow": "The rate is too low"
+    },
     "Table": {
       "search": "Search",
-      "placeholder": "Level"
+      "placeholder": "Level",
+      "error": {
+        "levelTooLow": "The set level is too low",
+        "levelExceedsMaximumLevel": "Level {level} exceeds the maximum Steam level"
+      }
     }
   },
-
   "Limitished": {
     "analyze": "Analyze",
     "analyzing": "Analyzing... ({current} of {total})",
     "placeholder": "App IDs for analysis",
     "copyList": "Copy list"
   },
-
   "Identified": {
     "find": "Find",
     "placeholder": "Steam ID, custom URL or profile link",
@@ -55,6 +66,9 @@
         "communityBan": "Community Banned"
       },
       "memberSince": "Member since"
+    },
+    "error": {
+      "profileNotFound": "The specified profile could not be found"
     }
   }
 }
