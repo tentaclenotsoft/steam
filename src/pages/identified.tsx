@@ -13,11 +13,10 @@ import Image from 'next/image'
 
 import { Form } from '@unform/web'
 
-import Footer from '@components/Footer'
-import Header from '@components/Header'
 import Input from '@components/Input'
 import SteamLevels from '@components/leveled/SteamLevels'
 import Loader from '@components/Loader'
+import PageLayout from '@components/PageLayout'
 import Toast from '@components/Toast'
 import { IUserData } from '@interfaces'
 import { createApiRoute } from '@utils'
@@ -49,8 +48,10 @@ const Identified: NextPage = () => {
   }
 
   return (
-    <div className="h-screen flex flex-col justify-between">
-      <Header title="Steam Identified" />
+    <PageLayout
+      header={{ title: 'Steam Identified' }}
+      footer={{ hoverTextStyle: 'hover:text-red-600 dark:hover:text-red-500' }}
+    >
       <div className="mx-5 sm:m-auto">
         <div className="space-y-3">
           <div className="p-5 bg-zinc-100 dark:bg-zinc-700 drop-shadow-md">
@@ -297,8 +298,7 @@ const Identified: NextPage = () => {
           </div>
         </div>
       </div>
-      <Footer hoverTextStyle="hover:text-red-600 dark:hover:text-red-500" />
-    </div>
+    </PageLayout>
   )
 }
 

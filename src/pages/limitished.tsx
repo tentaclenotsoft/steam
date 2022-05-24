@@ -6,9 +6,8 @@ import { useTranslations } from 'next-intl'
 
 import { Form } from '@unform/web'
 
-import Footer from '@components/Footer'
-import Header from '@components/Header'
 import Input from '@components/Input'
+import PageLayout from '@components/PageLayout'
 import { IAppDetails, IPromiseFulfilledResult } from '@interfaces'
 import { createApiRoute } from '@utils'
 import { SteamHTTP } from '@utils/Constants'
@@ -68,8 +67,10 @@ const Limitished: NextPage = () => {
   }
 
   return (
-    <div className="h-screen flex flex-col justify-between">
-      <Header title="Steam Limitished" />
+    <PageLayout
+      header={{ title: 'Steam Limitished' }}
+      footer={{ hoverTextStyle: 'hover:text-sky-600 dark:hover:text-sky-500' }}
+    >
       <div className="flex justify-center">
         <div className="space-y-3">
           <Form onSubmit={handleSubmit}>
@@ -193,8 +194,7 @@ const Limitished: NextPage = () => {
           </div>
         </div>
       </div>
-      <Footer hoverTextStyle="hover:text-sky-600 dark:hover:text-sky-500" />
-    </div>
+    </PageLayout>
   )
 }
 

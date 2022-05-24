@@ -6,11 +6,10 @@ import { useTranslations } from 'next-intl'
 import { Form } from '@unform/web'
 import useLocalStorage from 'use-local-storage'
 
-import Footer from '@components/Footer'
-import Header from '@components/Header'
 import Input from '@components/Input'
 import SteamLevels from '@components/leveled/SteamLevels'
 import Loader from '@components/Loader'
+import PageLayout from '@components/PageLayout'
 import Toast from '@components/Toast'
 import Tooltip from '@components/Tooltip'
 import { ILeveledResponse, LeveledSettings } from '@interfaces'
@@ -88,11 +87,15 @@ const Leveled: NextPage = () => {
   }
 
   return (
-    <div className="h-screen flex flex-col justify-between">
-      <Header
-        title="Steam Leveled"
-        pages={[{ title: 'Table', path: '/leveled/table' }]}
-      />
+    <PageLayout
+      header={{
+        title: 'Steam Leveled',
+        pages: [{ title: 'Table', path: '/leveled/table' }]
+      }}
+      footer={{
+        hoverTextStyle: 'hover:text-indigo-600 dark:hover:text-indigo-500'
+      }}
+    >
       <div className="flex justify-center">
         <div className="w-96 sm:w-fit mx-5 sm:m-auto space-y-3 drop-shadow-md">
           <div>
@@ -289,8 +292,7 @@ const Leveled: NextPage = () => {
           </div>
         </div>
       </div>
-      <Footer hoverTextStyle="hover:text-indigo-600 dark:hover:text-indigo-500" />
-    </div>
+    </PageLayout>
   )
 }
 

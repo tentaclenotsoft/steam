@@ -7,10 +7,9 @@ import { useTranslations } from 'next-intl'
 import { Form } from '@unform/web'
 
 import SteamLevelsTable from '@assets/json/steam-levels-table.json'
-import Footer from '@components/Footer'
-import Header from '@components/Header'
 import Input from '@components/Input'
 import SteamLevels from '@components/leveled/SteamLevels'
+import PageLayout from '@components/PageLayout'
 import Toast from '@components/Toast'
 import { numberFormatter } from '@utils'
 import { MAX_LEVEL } from '@utils/Constants'
@@ -50,11 +49,15 @@ const Table: NextPage = () => {
   }
 
   return (
-    <div className="h-screen flex flex-col justify-between">
-      <Header
-        title="Steam Leveled"
-        pages={[{ title: 'Leveled', path: '/leveled' }]}
-      />
+    <PageLayout
+      header={{
+        title: 'Steam Leveled',
+        pages: [{ title: 'Leveled', path: '/leveled' }]
+      }}
+      footer={{
+        hoverTextStyle: 'hover:text-indigo-600 dark:hover:text-indigo-500'
+      }}
+    >
       <div className="mx-5 sm:m-auto space-y-3">
         <div className="p-5 bg-zinc-100 dark:bg-zinc-700 drop-shadow-md">
           <Form onSubmit={handleSubmit}>
@@ -108,8 +111,7 @@ const Table: NextPage = () => {
           <BiUpArrowAlt size={30} />
         </button>
       )}
-      <Footer hoverTextStyle="hover:text-indigo-600 dark:hover:text-indigo-500" />
-    </div>
+    </PageLayout>
   )
 }
 
