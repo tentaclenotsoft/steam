@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import KofiButton from 'kofi-button'
 
+import PixButton from './PixButton'
 import SwitchLocale from './SwitchLocale'
 
 const Footer = ({ hoverTextStyle }: { hoverTextStyle: string }) => {
@@ -26,12 +27,13 @@ const Footer = ({ hoverTextStyle }: { hoverTextStyle: string }) => {
           <span className="text-zinc-500 dark:text-zinc-400 text-xs">
             {t('siteHasNoAffiliation')}
           </span>
-          <div className="my-3">
+          <div className="flex justify-center my-3 space-x-3">
             <KofiButton
               title={t('buyMeACoffee')}
               color="rgb(153, 153, 153, 0.3)"
               kofiID="I2I0BJLVQ"
             />
+            <PixButton title={t('doThePix')} username="asd" />
           </div>
           <SwitchLocale />
         </div>
