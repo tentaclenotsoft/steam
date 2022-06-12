@@ -81,20 +81,20 @@ const Table: NextPageWithMessages = () => {
             ([levelIndex, levels], index) => (
               <div
                 key={index}
-                className="flex justify-center md:justify-between hover:bg-zinc-300/50 dark:hover:bg-zinc-50/10"
+                className="flex flex-col sm:flex-row justify-center md:justify-between mt-5 sm:mt-0 hover:bg-zinc-300/50 dark:hover:bg-zinc-50/10"
               >
-                <div className="my-auto mx-5 md:ml-6">
+                <div className="flex justify-center my-auto mx-5 md:ml-6">
                   <SteamLevels level={+levelIndex} />
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-5 xl:grid-cols-10 ml-8 py-3 xl:divide-x divide-zinc-300/60 dark:divide-zinc-500/30">
+                <div className="grid grid-cols-5 xl:grid-cols-10 sm:ml-8 py-3 xl:divide-x divide-zinc-300/60 dark:divide-zinc-500/30">
                   {levels.map(({ level, xp }, index) => (
                     <div
                       id={level.toString()}
                       key={index}
-                      className="w-24 flex flex-col content-center py-1 text-center"
+                      className="w-max sm:w-24 flex flex-col content-center m-auto py-1 text-center"
                     >
                       <span className="text-xl">{level}</span>
-                      <span className="text-zinc-400 text-sm">
+                      <span className="text-xs sm:text-sm text-zinc-400">
                         {numberFormatter(xp)}
                       </span>
                     </div>
