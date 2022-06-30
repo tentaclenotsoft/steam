@@ -190,7 +190,7 @@ const Leveled: NextPageWithMessages = () => {
                       className="h-8 px-2 text-zinc-600/90 dark:text-zinc-200 bg-zinc-200 dark:bg-zinc-600/75 outline-none"
                       type="text"
                       placeholder={t('rate.placeholder')}
-                      pattern="[0-9]*"
+                      pattern="^\d+(\.{0,1}\d{0,2})$"
                       onInput={(event) => inputValueValidator(event, 'rate')}
                       value={inputValidValue.rate}
                     />
