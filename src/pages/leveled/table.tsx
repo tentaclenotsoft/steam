@@ -83,7 +83,7 @@ const Table: NextPageWithMessages = () => {
                 key={index}
                 className="flex flex-col sm:flex-row justify-center md:justify-between mt-5 sm:mt-0 hover:bg-zinc-300/50 dark:hover:bg-zinc-50/10"
               >
-                <div className="flex justify-center my-auto mx-5 md:ml-6">
+                <div className="flex justify-center mx-5 my-4 sm:my-auto md:ml-6">
                   <SteamLevels level={+levelIndex} />
                 </div>
                 <div className="grid grid-cols-5 xl:grid-cols-10 sm:ml-8 py-3 xl:divide-x divide-zinc-300/60 dark:divide-zinc-500/30">
