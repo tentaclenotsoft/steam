@@ -52,7 +52,7 @@ const Home: NextPage = () => {
   }
 
   return (
-    <div className="h-screen flex">
+    <div className="h-screen flex text-zinc-800 dark:text-zinc-50 bg-zinc-300 dark:bg-zinc-700 bg-topography">
       <div className="m-auto">
         {mounted && (
           <div className="flex flex-col">

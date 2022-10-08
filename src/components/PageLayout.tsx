@@ -13,7 +13,7 @@ const PageLayout = ({
   children: ReactNode
 }) => {
   return (
-    <div className="h-screen flex flex-col justify-between">
+    <div className="h-screen flex flex-col justify-between text-zinc-800 dark:text-zinc-50 bg-zinc-300 dark:bg-zinc-700 bg-topography">
       <Header {...header} />
       {children}
       <Footer {...footer} />

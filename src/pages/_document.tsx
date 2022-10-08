@@ -9,7 +9,7 @@ const MyDocument = class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
         </Head>
-        <body className="text-zinc-800 dark:text-zinc-50 bg-zinc-300 dark:bg-zinc-700 bg-topography font-proxima-nova">
+        <body className="font-proxima-nova">
           <Main />
           <NextScript />
         </body>
