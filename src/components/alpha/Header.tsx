@@ -1,5 +1,3 @@
-import React from 'react'
-
 import SwitchTheme from './SwitchTheme'
 
 const Header = () => {

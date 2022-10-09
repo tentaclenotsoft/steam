@@ -1,5 +1,3 @@
-import React from 'react'
-
 import KofiButton from 'kofi-button'
 
 import PixButton from '@components/PixButton'

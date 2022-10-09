@@ -42,6 +42,8 @@
     ],
     "camelcase": "off",
     "no-use-before-define": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
     "space-before-function-paren": ["error", "always"],
     "prettier/prettier": "off"
   },

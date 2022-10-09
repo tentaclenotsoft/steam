@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Switch from 'react-switch'
 
 import { useTheme } from 'next-themes'
