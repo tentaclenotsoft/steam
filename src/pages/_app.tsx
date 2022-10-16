@@ -24,7 +24,7 @@ export default function MyApp ({ Component, pageProps }: CustomAppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <NextIntlProvider messages={pageProps.messages}>
-        <ThemeProvider attribute="class" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="dark">
           {getLayout(<Component {...pageProps} />)}
         </ThemeProvider>
       </NextIntlProvider>
