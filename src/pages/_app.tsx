@@ -1,5 +1,3 @@
-import { ToastContainer } from 'react-toastify'
-
 import { NextComponentType, NextPageContext } from 'next'
 import { AbstractIntlMessages, NextIntlProvider } from 'next-intl'
 import { ThemeProvider } from 'next-themes'
@@ -7,8 +5,6 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
 import '../styles/globals.css'
-import '../components/leveled/SteamLevels/levels.css'
-import 'react-toastify/dist/ReactToastify.css'
 
 type CustomAppProps = AppProps & {
   Component: NextComponentType<NextPageContext, any, any> & {
@@ -19,7 +15,7 @@ type CustomAppProps = AppProps & {
   }
 }
 
-const MyApp = ({ Component, pageProps }: CustomAppProps) => {
+export default function MyApp ({ Component, pageProps }: CustomAppProps) {
   const getLayout = Component.getLayout || ((page) => page)
 
   return (
@@ -30,11 +26,8 @@ const MyApp = ({ Component, pageProps }: CustomAppProps) => {
       <NextIntlProvider messages={pageProps.messages}>
         <ThemeProvider attribute="class" enableSystem={false}>
           {getLayout(<Component {...pageProps} />)}
-          <ToastContainer />
         </ThemeProvider>
       </NextIntlProvider>
     </>
   )
 }
-
-export default MyApp

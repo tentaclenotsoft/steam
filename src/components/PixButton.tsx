@@ -1,14 +1,12 @@
-import React from 'react'
-
 import Image from 'next/image'
 
-const PixButton = ({
+export default function PixButton ({
   title,
   username
 }: {
   title: string
   username: string
-}) => {
+}) {
   return (
     <a href={`https://livepix.gg/${username}`} target="_blank" rel="noreferrer">
       <div className="h-10 flex items-center border rounded-tl-2xl rounded-br-2xl text-zinc-500 hover:text-zinc-600 bg-white/90 drop-shadow">
@@ -22,5 +20,3 @@ const PixButton = ({
     </a>
   )
 }
-
-export default PixButton

@@ -1,8 +1,6 @@
-import React from 'react'
-
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
-const MyDocument = class MyDocument extends Document {
+export default class MyDocument extends Document {
   render () {
     return (
       <Html>
@@ -17,5 +15,3 @@ const MyDocument = class MyDocument extends Document {
     )
   }
 }
-
-export default MyDocument
