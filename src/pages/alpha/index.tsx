@@ -1,6 +1,6 @@
 import Layout from '@components/alpha/Layout'
 
-const Index = () => {
+export default function Index () {
   return (
     <div className="text-3xl font-black m-auto tracking-tighter uppercase opacity-10 animate-pulse">
       Put your content here
@@ -11,5 +11,3 @@ const Index = () => {
 Index.getLayout = (page) => {
   return <Layout>{page}</Layout>
 }
-
-export default Index

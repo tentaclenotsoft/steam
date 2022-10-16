@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes'
 
 import { shade } from 'polished'
 
-const SwitchTheme = () => {
+export default function SwitchTheme () {
   const [isMounted, setIsMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
@@ -41,5 +41,3 @@ const SwitchTheme = () => {
     />
   )
 }
-
-export default SwitchTheme

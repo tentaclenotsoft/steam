@@ -2,7 +2,7 @@ import KofiButton from 'kofi-button'
 
 import PixButton from '@components/PixButton'
 
-const Footer = () => {
+export default function Footer () {
   return (
     <div className="h-72 sm:h-56 flex justify-center items-center pt-5">
       <div className="h-full flex flex-col">
@@ -34,5 +34,3 @@ const Footer = () => {
     </div>
   )
 }
-
-export default Footer
