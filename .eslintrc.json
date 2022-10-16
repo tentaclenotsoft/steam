@@ -26,6 +26,7 @@
     "prettier"
   ],
   "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
     "import-helpers/order-imports": [
       "warn",
       {
@@ -41,11 +42,16 @@
       }
     ],
     "camelcase": "off",
-    "no-use-before-define": "off",
-    "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off",
-    "space-before-function-paren": ["error", "always"],
-    "prettier/prettier": "off"
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "named": "always",
+        "asyncArrow": "always"
+      }
+    ],
+    "prettier/prettier": "off",
+    "react/react-in-jsx-scope": "off"
   },
   "settings": {
     "react": {
