@@ -1,8 +1,8 @@
 const MAX_LEVEL = 5299
 
 const Locales = [
-  { locale: 'en', country: 'US', title: 'English' },
-  { locale: 'br', country: 'BR', title: 'Português do Brasil' }
+  { locale: 'en', code: 'US', title: 'English' },
+  { locale: 'br', code: 'BR', title: 'Português do Brasil' }
 ]
 
 const ProjectPages = [

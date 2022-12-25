@@ -1,84 +1,13 @@
 {
-  "NotFound": {
-    "title": "Página não encontrada.",
-    "goBackHome": "Volto para a página inicial"
-  },
-  "Footer": {
-    "allRightReserved": "Todos os direitos reservados",
-    "siteHasNoAffiliation": "Este site não é afiliado à Valve, Steam ou a nenhum de seus parceiros.",
-    "buyMeACoffee": "Compre-me um café!",
-    "doThePix": "Faz o pix!"
-  },
-  "Leveled": {
-    "settings": {
-      "title": "Configurações",
-      "webApiKey": {
-        "getYourKeyHere": "Pegue sua chave aqui",
-        "placeholder": "Sua chave (armazenada apenas em seu navegador)"
+  "Components": {
+    "Footer": {
+      "supportArea": {
+        "supportThisProject": "Apoie este projeto",
+        "buyMeACoffee": "Compre-me um café!",
+        "doThePix": "Faz o pix!"
       },
-      "user": {
-        "label": "Usuário",
-        "placeholder": "Steam ID, URL personalizado ou link de perfil"
-      }
-    },
-    "dreamLevel": {
-      "label": "Nível dos sonhos",
-      "placeholder": "Seu nível dos sonhos"
-    },
-    "rate": {
-      "label": "Taxa",
-      "placeholder": "Taxa de compra"
-    },
-    "calculate": "Calcular",
-    "result": {
-      "xpNeeded": "XP necessário",
-      "setsNeeded": "Conjuntos necessários",
-      "keysNeeded": "Chaves necessárias",
-      "coupons": "Cupons",
-      "emoticonsAndBackground": "Emoticons e Planos de fundo",
-      "friends": "Amigos"
-    },
-    "error": {
-      "invalidKey": "Forneça uma chave de API de vapor válida",
-      "invalidSteamId": "Forneça um Steam ID válido",
-      "invalidDreamLevel": "Forneça um nível dos sonhos válido",
-      "invalidRate": "Forneça uma taxa válida",
-      "dreamLevelHigherThanMaximumLevel": "O nível dos sonhos é maior que o nível máximo estabelecido para cálculo",
-      "dreamLevelLessThanOrEqual": "O nível dos sonhos é menor ou igual ao nível atual",
-      "rateTooLow": "A taxa é muito baixa"
-    },
-    "Table": {
-      "search": "Procurar",
-      "placeholder": "Nível",
-      "error": {
-        "levelTooLow": "O nível definido é muito baixo",
-        "levelExceedsMaximumLevel": "O nível {level} excede o nível máximo da Steam"
-      }
-    }
-  },
-  "Limitished": {
-    "analyze": "Analisar",
-    "analyzing": "Analisando... ({current} of {total})",
-    "placeholder": "IDs de aplicativos para análise",
-    "copyList": "Copiar lista"
-  },
-  "Identified": {
-    "find": "Encontrar",
-    "placeholder": "Steam ID, URL personalizado ou link de perfil",
-    "user": {
-      "realname": "Nome real",
-      "location": "Localização",
-      "status": "Status",
-      "profilePrivacy": "Privacidade do Perfil",
-      "limitations": {
-        "tradeBan": "Banido de trocar",
-        "limited": "Limitado",
-        "communityBan": "Banido da comunidade"
-      },
-      "memberSince": "Membro desde"
-    },
-    "error": {
-      "profileNotFound": "O perfil especificado não foi encontrado"
+      "allRightReserved": "Todos os direitos reservados",
+      "siteHasNoAffiliation": "Este site não é afiliado à Valve, Steam ou a nenhum de seus parceiros."
     }
   }
 }
