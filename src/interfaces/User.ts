@@ -1,4 +1,4 @@
-export interface IUserData {
+export interface IUser {
   steam_3id: string
   steam_id32: string
   steam_id64: string

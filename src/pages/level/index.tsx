@@ -15,7 +15,7 @@ import Label from '@components/Label'
 import Layout from '@components/Layout'
 import Loader from '@components/Loader'
 import SteamLevels from '@components/SteamLevels'
-import { ILevelResponse, LevelSettings } from '@interfaces'
+import { ILevel, ILevelSettings } from '@interfaces'
 import { createApiRoute, numberFormatter } from '@utils'
 import Request from '@utils/Fetcher'
 
@@ -43,13 +43,13 @@ export default function Level () {
 
   const [settings, setSettings] = useLocalStorage(
     'steam_toolkit/level/settings',
-    {} as LevelSettings
+    {} as ILevelSettings
   )
   const [loading, setLoading] = useState(false)
   const [inputType, setInputType] = useState('')
   const [inputValueInvalid, setInputValueInvalid] = useState('')
 
-  const mergeSettings = (object: { [key: string]: string }): LevelSettings =>
+  const mergeSettings = (object: { [key: string]: string }): ILevelSettings =>
     Object.assign({}, settings, object)
   const useMountEffect = (effect: EffectCallback) => useEffect(effect, [])
   const validKeySize = (value: string) =>
@@ -77,8 +77,8 @@ export default function Level () {
         : formInputs[field]
     }))
 
-  const [userLevelingData, setUserLevelingData] = useState<ILevelResponse>(
-    {} as ILevelResponse
+  const [userLevelingData, setUserLevelingData] = useState<ILevel>(
+    {} as ILevel
   )
 
   const handleSubmit = (event) => {
@@ -86,7 +86,7 @@ export default function Level () {
 
     setLoading(true)
 
-    Request(createApiRoute('/leveled', 2), {
+    Request(createApiRoute('/level'), {
       query: {
         key: settings?.api_key,
         user: settings?.user,
