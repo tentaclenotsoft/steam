@@ -1,0 +1,359 @@
+.level {
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 50%;
+  border: solid rgb(155, 155, 155, 0.5) 2px;
+  height: 28px;
+  width: 28px;
+  line-height: 26px;
+  text-align: center;
+  cursor: default;
+  margin-top: 2px;
+}
+
+.level.level-0 {
+  border-color: #9b9b9b;
+}
+
+.level.level-10 {
+  border-color: #c02942;
+}
+
+.level.level-20 {
+  border-color: #d95b43;
+}
+
+.level.level-30 {
+  border-color: #fecc23;
+}
+
+.level.level-40 {
+  border-color: #467a3c;
+}
+
+.level.level-50 {
+  border-color: #4e8ddb;
+}
+
+.level.level-60 {
+  border-color: #7652c9;
+}
+
+.level.level-70 {
+  border-color: #c252c9;
+}
+
+.level.level-80 {
+  border-color: #542437;
+}
+
+.level.level-90 {
+  border-color: #997c52;
+}
+
+.level.level-100,
+.level.level-200,
+.level.level-300,
+.level.level-400,
+.level.level-500,
+.level.level-600,
+.level.level-700,
+.level.level-800,
+.level.level-900,
+.level.level-1000,
+.level.level-1100,
+.level.level-1200,
+.level.level-1300,
+.level.level-1400,
+.level.level-1500,
+.level.level-1600,
+.level.level-1700,
+.level.level-1800,
+.level.level-1900,
+.level.level-2000,
+.level.level-2100,
+.level.level-2200,
+.level.level-2300,
+.level.level-2400,
+.level.level-2500,
+.level.level-2600,
+.level.level-2700,
+.level.level-2800,
+.level.level-2900,
+.level.level-3000,
+.level.level-3100,
+.level.level-3200,
+.level.level-3300,
+.level.level-3400,
+.level.level-3500,
+.level.level-3600,
+.level.level-3700,
+.level.level-3800,
+.level.level-3900,
+.level.level-4000,
+.level.level-4100,
+.level.level-4200,
+.level.level-4300,
+.level.level-4400,
+.level.level-4500,
+.level.level-4600,
+.level.level-4700,
+.level.level-4800,
+.level.level-4900,
+.level.level-5000,
+.level.level-5100,
+.level.level-5200 {
+  border: none;
+  border-radius: 0;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  font-size: 14px;
+  height: 32px;
+  width: 32px;
+  line-height: 32px;
+  text-shadow: 1px 1px #1a1a1a;
+}
+
+.level.level-100 {
+  background-image: url('/images/png/steam/levels_hexagons.png');
+}
+
+.level.level-200 {
+  background-image: url('/images/png/steam/levels_shields.png');
+}
+
+.level.level-300 {
+  background-image: url('/images/png/steam/levels_books.png');
+}
+
+.level.level-400 {
+  background-image: url('/images/png/steam/levels_chevrons.png');
+}
+
+.level.level-500 {
+  background-image: url('/images/png/steam/levels_circle2.png');
+}
+
+.level.level-600 {
+  background-image: url('/images/png/steam/levels_angle.png');
+}
+
+.level.level-700 {
+  background-image: url('/images/png/steam/levels_flag.png');
+}
+
+.level.level-800 {
+  background-image: url('/images/png/steam/levels_wings.png');
+}
+
+.level.level-900 {
+  background-image: url('/images/png/steam/levels_arrows.png');
+}
+
+.level.level-1000 {
+  background-image: url('/images/png/steam/levels_crystals.png');
+}
+
+.level.level-1100 {
+  background-image: url('/images/png/steam/levels_space.png');
+}
+
+.level.level-1200 {
+  background-image: url('/images/png/steam/levels_waterelement.png');
+}
+
+.level.level-1300 {
+  background-image: url('/images/png/steam/levels_fireelement.png');
+}
+
+.level.level-1400 {
+  background-image: url('/images/png/steam/levels_earthelement.png');
+}
+
+.level.level-1500 {
+  background-image: url('/images/png/steam/levels_airelement_1-2.png');
+}
+
+.level.level-1600 {
+  background-image: url('/images/png/steam/levels_airelement_3-4.png');
+}
+
+.level.level-1700 {
+  background-image: url('/images/png/steam/levels_airelement_5-6.png');
+}
+
+.level.level-1800 {
+  background-image: url('/images/png/steam/levels_airelement_7-8.png');
+}
+
+.level.level-1900 {
+  background-image: url('/images/png/steam/levels_airelement_9-10.png');
+}
+
+.level.level-2000 {
+  background-image: url('/images/png/steam/levels_geo_1-2.png');
+}
+
+.level.level-2100 {
+  background-image: url('/images/png/steam/levels_geo_3-4.png');
+}
+
+.level.level-2200 {
+  background-image: url('/images/png/steam/levels_geo_5-6.png');
+}
+
+.level.level-2300 {
+  background-image: url('/images/png/steam/levels_geo_7-8.png');
+}
+
+.level.level-2400 {
+  background-image: url('/images/png/steam/levels_geo_9-10.png');
+}
+
+.level.level-2500 {
+  background-image: url('/images/png/steam/levels_mandala_1-2.png');
+}
+
+.level.level-2600 {
+  background-image: url('/images/png/steam/levels_mandala_3-4.png');
+}
+
+.level.level-2700 {
+  background-image: url('/images/png/steam/levels_mandala_5-6.png');
+}
+
+.level.level-2800 {
+  background-image: url('/images/png/steam/levels_mandala_7-8.png');
+}
+
+.level.level-2900 {
+  background-image: url('/images/png/steam/levels_mandala_9-10.png');
+}
+
+.level.level-3000 {
+  background-image: url('/images/png/steam/levels_spiro_1-2.png');
+}
+
+.level.level-3100 {
+  background-image: url('/images/png/steam/levels_spiro_3-4.png');
+}
+
+.level.level-3200 {
+  background-image: url('/images/png/steam/levels_spiro_5-6.png');
+}
+
+.level.level-3300 {
+  background-image: url('/images/png/steam/levels_spiro_7-8.png');
+}
+
+.level.level-3400 {
+  background-image: url('/images/png/steam/levels_spiro_9-10.png');
+}
+
+.level.level-3500 {
+  background-image: url('/images/png/steam/levels_patterns_1-2.png');
+}
+
+.level.level-3600 {
+  background-image: url('/images/png/steam/levels_patterns_3-4.png');
+}
+
+.level.level-3700 {
+  background-image: url('/images/png/steam/levels_patterns_5-6.png');
+}
+
+.level.level-3800 {
+  background-image: url('/images/png/steam/levels_patterns_7-8.png');
+}
+
+.level.level-3900 {
+  background-image: url('/images/png/steam/levels_patterns_9-10.png');
+}
+
+.level.level-4000 {
+  background-image: url('/images/png/steam/levels_shapes_1.png');
+}
+
+.level.level-4100 {
+  background-image: url('/images/png/steam/levels_shapes_2.png');
+}
+
+.level.level-4200 {
+  background-image: url('/images/png/steam/levels_shapes_3.png');
+}
+
+.level.level-4300 {
+  background-image: url('/images/png/steam/levels_shapes_4.png');
+}
+
+.level.level-4400 {
+  background-image: url('/images/png/steam/levels_shapes_5.png');
+}
+
+.level.level-4500 {
+  background-image: url('/images/png/steam/levels_grunge_1.png');
+}
+
+.level.level-4600 {
+  background-image: url('/images/png/steam/levels_grunge_2.png');
+}
+
+.level.level-4700 {
+  background-image: url('/images/png/steam/levels_grunge_3.png');
+}
+
+.level.level-4800 {
+  background-image: url('/images/png/steam/levels_grunge_4.png');
+}
+
+.level.level-4900 {
+  background-image: url('/images/png/steam/levels_grunge_5.png');
+}
+
+.level.level-5000 {
+  background-image: url('/images/png/steam/levels_halftone_1.png');
+}
+
+.level.level-5100 {
+  background-image: url('/images/png/steam/levels_halftone_2.png');
+}
+
+.level.level-5200 {
+  background-image: url('/images/png/steam/levels_halftone_3.png');
+}
+
+.level.level-plus-10 {
+  background-position: 0 -32px;
+}
+
+.level.level-plus-20 {
+  background-position: 0 -64px;
+}
+
+.level.level-plus-30 {
+  background-position: 0 -96px;
+}
+
+.level.level-plus-40 {
+  background-position: 0 -128px;
+}
+
+.level.level-plus-50 {
+  background-position: 0 -160px;
+}
+
+.level.level-plus-60 {
+  background-position: 0 -192px;
+}
+
+.level.level-plus-70 {
+  background-position: 0 -224px;
+}
+
+.level.level-plus-80 {
+  background-position: 0 -256px;
+}
+
+.level.level-plus-90 {
+  background-position: 0 -288px;
+}

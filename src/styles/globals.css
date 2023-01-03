@@ -169,4 +169,8 @@
   background-image: url('/images/svg/topography.svg');
 }
 
+input[type='password'] {
+  letter-spacing: 0.1em;
+}
+
 @tailwind utilities;

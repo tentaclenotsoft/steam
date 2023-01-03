@@ -9,5 +9,37 @@
       "allRightReserved": "Todos os direitos reservados",
       "siteHasNoAffiliation": "Este site não é afiliado à Valve, Steam ou a nenhum de seus parceiros."
     }
+  },
+  "Pages": {
+    "Level": {
+      "settings": {
+        "title": "Configurações",
+        "webApiKey": {
+          "getYourKeyHere": "Pegue sua chave aqui",
+          "placeholder": "Sua chave (armazenada apenas em seu navegador)"
+        },
+        "user": {
+          "label": "Usuário",
+          "placeholder": "Steam ID, URL personalizado ou link de perfil"
+        }
+      },
+      "dreamLevel": {
+        "label": "Nível dos sonhos",
+        "placeholder": "Seu nível dos sonhos"
+      },
+      "rate": {
+        "label": "Taxa",
+        "placeholder": "Taxa de compra"
+      },
+      "calculate": "Calcular",
+      "result": {
+        "xpNeeded": "XP necessário",
+        "setsNeeded": "Conjuntos necessários",
+        "keysNeeded": "Chaves necessárias",
+        "coupons": "Cupons",
+        "emoticonsAndBackgrounds": "Emoticons e Planos de fundo",
+        "friends": "Amigos"
+      }
+    }
   }
 }

@@ -1,9 +1,9 @@
-export interface ILeveledSettings {
-  steam_api_key: string
+export interface ILevelSettings {
+  api_key: string
   steam_id: string
 }
 
-export interface ILeveledResponse {
+export interface ILevelResponse {
   xp: number
   level: number
   xp_needed_to_level_up: number
@@ -19,7 +19,7 @@ export interface ILeveledResponse {
   friends: number
 }
 
-export interface ILeveledOptions {
+export interface ILevelOptions {
   key: string
   steam_id: string
   dream_level: number
@@ -27,6 +27,6 @@ export interface ILeveledOptions {
   max_level: number
 }
 
-export type LeveledSettings = Omit<ILeveledSettings, 'steam_id'> & {
+export type LevelSettings = Omit<ILevelSettings, 'steam_id'> & {
   user: string
 }
