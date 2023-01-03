@@ -50,4 +50,4 @@ export default function Footer () {
   )
 }
 
-Footer.messages = ['Footer']
+Footer.messages = ['Components.Footer']
