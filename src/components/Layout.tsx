@@ -5,12 +5,10 @@ import Header from './Header'
 
 export default function Layout ({ children }: { children: ReactNode }) {
   return (
-    <div className="text-zinc-800 dark:text-zinc-200 bg-zinc-200 dark:bg-black">
-      <div className="h-screen flex flex-col justify-between xl:mx-24 2xl:mx-[32rem]">
-        <Header />
-        <div className="mb-auto">{children}</div>
-        <Footer />
-      </div>
+    <div className="h-screen flex flex-col justify-between xl:mx-24 2xl:mx-[32rem]">
+      <Header />
+      <div className="mb-auto">{children}</div>
+      <Footer />
     </div>
   )
 }

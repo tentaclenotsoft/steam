@@ -7,7 +7,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
         </Head>
-        <body className="font-proxima-nova">
+        <body className="text-zinc-800 dark:text-zinc-200 bg-zinc-200 dark:bg-black font-proxima-nova">
           <Main />
           <NextScript />
         </body>
