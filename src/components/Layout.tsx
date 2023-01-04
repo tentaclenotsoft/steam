@@ -8,7 +8,7 @@ export default function Layout ({ children }: { children: ReactNode }) {
     <div className="text-zinc-800 dark:text-zinc-200 bg-zinc-200 dark:bg-black">
       <div className="h-screen flex flex-col justify-between xl:mx-24 2xl:mx-[32rem]">
         <Header />
-        {children}
+        <div className="mb-auto">{children}</div>
         <Footer />
       </div>
     </div>

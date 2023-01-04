@@ -2,7 +2,7 @@ import SwitchTheme from './SwitchTheme'
 
 export default function Header () {
   return (
-    <div className="h-60 sm:h-44 flex flex-col sm:flex-row justify-between items-center px-16 py-6 sm:py-0">
+    <div className="h-60 sm:h-44 flex flex-col sm:flex-row justify-between items-center px-16 py-6">
       <div className="text-center text-5xl font-black tracking-tighter leading-9 bg-clip-text text-transparent bg-gradient-to-br from-rose-600 to-red-700">
         Steam
         <br />
