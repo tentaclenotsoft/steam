@@ -105,7 +105,7 @@ export default function Level () {
 
   return (
     <div className="flex">
-      <div className="w-full mx-[25%] p-2 space-y-10">
+      <div className="w-full mx-5 md:mx-[10%] lg:mx-[25%] p-2 space-y-10">
         <div>
           <div className="flex flex-col">
             <div className="w-full flex flex-col">
@@ -155,7 +155,7 @@ export default function Level () {
             </div>
           </div>
           <form className="space-y-2.5" onSubmit={handleSubmit}>
-            <div className="flex space-x-2">
+            <div className="flex flex-col sm:flex-row sm:space-x-2">
               <div className="w-full flex flex-col">
                 <Label>{t('dreamLevel.label')}</Label>
                 <Input
