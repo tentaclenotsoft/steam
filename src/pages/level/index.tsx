@@ -56,7 +56,9 @@ export default function Level () {
     !!(value?.length < 32 || value?.length > 32)
 
   useMountEffect(() =>
-    setInputType(validKeySize(settings.api_key) ? 'text' : 'password')
+    setInputType(
+      !settings.api_key || validKeySize(settings.api_key) ? 'text' : 'password'
+    )
   )
 
   useEffect(() =>
@@ -77,9 +79,7 @@ export default function Level () {
         : formInputs[field]
     }))
 
-  const [userLevelingData, setUserLevelingData] = useState<ILevel>(
-    {} as ILevel
-  )
+  const [userLevelingData, setUserLevelingData] = useState<ILevel>({} as ILevel)
 
   const handleSubmit = (event) => {
     event.preventDefault()
