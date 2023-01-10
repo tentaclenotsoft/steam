@@ -26,7 +26,7 @@ export default function Header () {
         <div
           className={clsx(
             'text-center text-5xl font-black tracking-tighter leading-9',
-            'bg-clip-text text-transparent bg-gradient-to-br from-rose-600 to-red-700 hover:from-rose-700 hover:to-red-800',
+            'bg-clip-text text-transparent bg-gradient-to-br from-rose-600 to-red-700',
             'cursor-pointer'
           )}
         >
