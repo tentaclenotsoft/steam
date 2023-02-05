@@ -16,6 +16,7 @@ import Layout from '@components/Layout'
 import Loader from '@components/Loader'
 import Progress from '@components/Progress'
 import SteamLevels from '@components/SteamLevels'
+import Tooltip from '@components/Tooltip'
 import { ILevel, ILevelSettings } from '@interfaces'
 import { createApiRoute, numberFormatter, percentage } from '@utils'
 import Request from '@utils/Fetcher'
@@ -187,7 +188,13 @@ export default function Level () {
         </div>
         <div className="relative space-y-5">
           <div className="h-32 flex justify-between items-center px-[15%]">
-            <SteamLevels level={userLevelingData?.level} size="large" />
+            <Tooltip
+              show={!!userLevelingData.xp}
+              message={`${numberFormatter(userLevelingData.xp)} XP`}
+              sideOffset={30}
+            >
+              <SteamLevels level={userLevelingData?.level} size="large" />
+            </Tooltip>
             <div className="flex flex-col items-center">
               <span className="text-sm text-zinc-400">
                 {t('result.xpNeeded')}
@@ -196,11 +203,26 @@ export default function Level () {
                 {numberFormatter(userLevelingData.xp_needed || 0)}
               </span>
             </div>
-            <SteamLevels level={userLevelingData?.dream_level} size="large" />
+            <Tooltip
+              show={!!userLevelingData.xp_from_dream_level}
+              message={`${numberFormatter(
+                userLevelingData.xp_from_dream_level
+              )} XP`}
+              sideOffset={30}
+            >
+              <SteamLevels level={userLevelingData?.dream_level} size="large" />
+            </Tooltip>
           </div>
           <div className="flex justify-between items-center mx-8 space-x-5">
             <div className="p-2">
-              <SteamLevels level={userLevelingData?.level} size="medium" />
+              <Tooltip
+                show={!!userLevelingData.xp_needed_to_current_level}
+                message={`${numberFormatter(
+                  userLevelingData.xp_needed_to_current_level
+                )} XP`}
+              >
+                <SteamLevels level={userLevelingData?.level} size="medium" />
+              </Tooltip>
             </div>
             <div className="w-full">
               <Progress
@@ -214,7 +236,17 @@ export default function Level () {
               />
             </div>
             <div className="p-2">
-              <SteamLevels level={userLevelingData?.level + 1} size="medium" />
+              <Tooltip
+                show={!!userLevelingData.xp}
+                message={`${numberFormatter(
+                  userLevelingData.xp + userLevelingData.xp_needed_to_level_up
+                )} XP`}
+              >
+                <SteamLevels
+                  level={userLevelingData?.level + 1}
+                  size="medium"
+                />
+              </Tooltip>
             </div>
           </div>
           <div>
