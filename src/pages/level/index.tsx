@@ -14,9 +14,10 @@ import Input from '@components/Input'
 import Label from '@components/Label'
 import Layout from '@components/Layout'
 import Loader from '@components/Loader'
+import Progress from '@components/Progress'
 import SteamLevels from '@components/SteamLevels'
 import { ILevel, ILevelSettings } from '@interfaces'
-import { createApiRoute, numberFormatter } from '@utils'
+import { createApiRoute, numberFormatter, percentage } from '@utils'
 import Request from '@utils/Fetcher'
 
 const ResultItem = ({
@@ -80,6 +81,7 @@ export default function Level () {
     }))
 
   const [userLevelingData, setUserLevelingData] = useState<ILevel>({} as ILevel)
+  const [xpOwnedAtCurrentLevel, setXpOwnedAtCurrentLevel] = useState(0)
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -99,6 +101,7 @@ export default function Level () {
         return console.log('Error: ' + data.message)
       }
 
+      setXpOwnedAtCurrentLevel(data.xp - data.xp_needed_to_current_level)
       setUserLevelingData(data)
     })
   }
@@ -184,7 +187,7 @@ export default function Level () {
         </div>
         <div className="relative space-y-5">
           <div className="h-32 flex justify-between items-center px-[15%]">
-            <SteamLevels level={userLevelingData?.level} />
+            <SteamLevels level={userLevelingData?.level} size="large" />
             <div className="flex flex-col items-center">
               <span className="text-sm text-zinc-400">
                 {t('result.xpNeeded')}
@@ -193,7 +196,26 @@ export default function Level () {
                 {numberFormatter(userLevelingData.xp_needed || 0)}
               </span>
             </div>
-            <SteamLevels level={userLevelingData?.dream_level} />
+            <SteamLevels level={userLevelingData?.dream_level} size="large" />
+          </div>
+          <div className="flex justify-between items-center mx-8 space-x-5">
+            <div className="p-2">
+              <SteamLevels level={userLevelingData?.level} size="medium" />
+            </div>
+            <div className="w-full">
+              <Progress
+                percentage={percentage(
+                  xpOwnedAtCurrentLevel,
+                  xpOwnedAtCurrentLevel + userLevelingData.xp_needed_to_level_up
+                )}
+                value={`+${numberFormatter(
+                  userLevelingData.xp_needed_to_level_up
+                )} XP`}
+              />
+            </div>
+            <div className="p-2">
+              <SteamLevels level={userLevelingData?.level + 1} size="medium" />
+            </div>
           </div>
           <div>
             <div className="grid grid-cols-3">
