@@ -48,6 +48,8 @@ const parseSteamProfileURL = (value: string) => {
   }
 }
 
+const percentage = (done: number, total: number) => (100 * done) / total
+
 const requiredXPFromLevel = (level: number) => {
   if (level <= 10) {
     return 100
@@ -109,6 +111,7 @@ export {
   levelToClasses,
   numberFormatter,
   parseSteamProfileURL,
+  percentage,
   requiredXPFromLevel,
   totalXPFromLevel
 }
