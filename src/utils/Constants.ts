@@ -5,21 +5,6 @@ const Locales = [
   { locale: 'br', code: 'BR', title: 'Português do Brasil' }
 ]
 
-const ProjectPages = [
-  {
-    title: 'Leveled',
-    path: '/leveled'
-  },
-  {
-    title: 'Limitished',
-    path: '/limitished'
-  },
-  {
-    title: 'Identified',
-    path: '/identified'
-  }
-]
-
 const SteamHTTP = {
   API: 'https://api.steampowered.com',
   STORE: 'https://store.steampowered.com',
@@ -27,4 +12,4 @@ const SteamHTTP = {
   COMMUNITY: 'https://steamcommunity.com'
 }
 
-export { MAX_LEVEL, Locales, ProjectPages, SteamHTTP }
+export { MAX_LEVEL, Locales, SteamHTTP }
