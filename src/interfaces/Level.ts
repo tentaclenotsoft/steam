@@ -6,6 +6,7 @@ export interface ILevelSettings {
 export interface ILevel {
   xp: number
   level: number
+  xp_needed_to_current_level: number
   xp_needed_to_level_up: number
   sets_needed_to_level_up: number
   keys_needed_to_level_up: number

@@ -60,6 +60,7 @@ export default class Level {
         }
 
         const currentLevelXP = +(data.player_xp.toString().slice(0, -2) + '00')
+        const xpNeededToCurrentLevel = totalXPFromLevel(level)
         const xpFromDreamLevel = totalXPFromLevel(options.dream_level)
         const setsNeeded = (xpFromDreamLevel - currentLevelXP) / 100
         const setsNeededToLevelUp = Math.ceil(
@@ -73,6 +74,7 @@ export default class Level {
         return {
           xp: data.player_xp,
           level,
+          xp_needed_to_current_level: xpNeededToCurrentLevel,
           xp_needed_to_level_up: data.player_xp_needed_to_level_up,
           sets_needed_to_level_up: setsNeededToLevelUp,
           keys_needed_to_level_up: setsNeededToLevelUp / options.rate,
