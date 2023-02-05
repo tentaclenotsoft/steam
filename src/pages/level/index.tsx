@@ -213,40 +213,52 @@ export default function Level () {
               <SteamLevels level={userLevelingData?.dream_level} size="large" />
             </Tooltip>
           </div>
-          <div className="flex justify-between items-center mx-8 space-x-5">
-            <div className="p-2">
-              <Tooltip
-                show={!!userLevelingData.xp_needed_to_current_level}
-                message={`${numberFormatter(
-                  userLevelingData.xp_needed_to_current_level
-                )} XP`}
-              >
-                <SteamLevels level={userLevelingData?.level} size="medium" />
-              </Tooltip>
-            </div>
-            <div className="w-full">
-              <Progress
-                percentage={percentage(
-                  xpOwnedAtCurrentLevel,
-                  xpOwnedAtCurrentLevel + userLevelingData.xp_needed_to_level_up
-                )}
-                value={`+${numberFormatter(
-                  userLevelingData.xp_needed_to_level_up
-                )} XP`}
-              />
-            </div>
-            <div className="p-2">
-              <Tooltip
-                show={!!userLevelingData.xp}
-                message={`${numberFormatter(
-                  userLevelingData.xp + userLevelingData.xp_needed_to_level_up
-                )} XP`}
-              >
-                <SteamLevels
-                  level={userLevelingData?.level + 1}
-                  size="medium"
+          <div className="flex flex-col text-center">
+            <div className="h-[3.125rem] flex justify-between items-center mx-8 space-x-5">
+              <div className="p-2">
+                <Tooltip
+                  show={!!userLevelingData.xp_needed_to_current_level}
+                  message={`${numberFormatter(
+                    userLevelingData.xp_needed_to_current_level
+                  )} XP`}
+                >
+                  <SteamLevels level={userLevelingData?.level} size="medium" />
+                </Tooltip>
+              </div>
+              <div className="w-full">
+                <Progress
+                  percentage={percentage(
+                    xpOwnedAtCurrentLevel,
+                    xpOwnedAtCurrentLevel +
+                      userLevelingData.xp_needed_to_level_up
+                  )}
+                  value={`+${numberFormatter(
+                    userLevelingData.xp_needed_to_level_up
+                  )} XP`}
                 />
-              </Tooltip>
+              </div>
+              <div className="p-2">
+                <Tooltip
+                  show={!!userLevelingData.xp}
+                  message={`${numberFormatter(
+                    userLevelingData.xp + userLevelingData.xp_needed_to_level_up
+                  )} XP`}
+                >
+                  <SteamLevels
+                    level={userLevelingData?.level + 1}
+                    size="medium"
+                  />
+                </Tooltip>
+              </div>
+            </div>
+            <div className="flex justify-center py-1">
+              <span className="text-sm text-zinc-500 dark:text-zinc-400/75 opacity-80">
+                {t('levelUp.setsNeeded', {
+                  sets:
+                    Math.ceil(userLevelingData.xp_needed_to_level_up / 100) ||
+                    '?'
+                })}
+              </span>
             </div>
           </div>
           <div>

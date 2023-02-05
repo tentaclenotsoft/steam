@@ -32,6 +32,9 @@
         "placeholder": "Rate of purchase"
       },
       "calculate": "Calculate",
+      "levelUp": {
+        "setsNeeded": "More {sets} sets to level up!"
+      },
       "result": {
         "xpNeeded": "XP needed",
         "setsNeeded": "Sets needed",

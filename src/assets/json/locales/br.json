@@ -32,6 +32,9 @@
         "placeholder": "Taxa de compra"
       },
       "calculate": "Calcular",
+      "levelUp": {
+        "setsNeeded": "Mais {sets} conjuntos para subir de nível!"
+      },
       "result": {
         "xpNeeded": "XP necessário",
         "setsNeeded": "Conjuntos necessários",
