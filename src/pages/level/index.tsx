@@ -150,6 +150,7 @@ export default function Level () {
                   setSettings(mergeSettings({ api_key: event.target.value }))
                 }
                 defaultValue={settings?.api_key}
+                readOnly={loading}
               />
             </div>
             <div className="w-full flex flex-col">
@@ -161,6 +162,7 @@ export default function Level () {
                   setSettings(mergeSettings({ user: event.target.value }))
                 }
                 defaultValue={settings?.user}
+                readOnly={loading}
               />
             </div>
           </div>
@@ -175,6 +177,7 @@ export default function Level () {
                   pattern="[0-9]*"
                   onInput={(event) => inputValueValidator(event, 'dreamLevel')}
                   value={formInputs.dreamLevel}
+                  readOnly={loading}
                 />
               </div>
               <div className="w-full flex flex-col">
@@ -186,10 +189,11 @@ export default function Level () {
                   pattern="^\d+(\.{0,1}\d{0,2})$"
                   onInput={(event) => inputValueValidator(event, 'rate')}
                   value={formInputs.rate}
+                  readOnly={loading}
                 />
               </div>
             </div>
-            <Button>{t('calculate')}</Button>
+            <Button disabled={loading}>{t('calculate')}</Button>
           </form>
         </div>
         <div className="relative space-y-5">
