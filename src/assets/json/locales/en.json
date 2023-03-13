@@ -42,6 +42,15 @@
         "coupons": "Coupons",
         "emoticonsAndBackgrounds": "Emoticons & Backgrounds",
         "friends": "Friends"
+      },
+      "error": {
+        "invalidKey": "Provide a valid steam API key",
+        "invalidSteamId": "Provide a valid Steam ID",
+        "invalidDreamLevel": "Provide a valid dream level",
+        "invalidRate": "Provide a valid rate",
+        "dreamLevelHigherThanMaximumLevel": "The level of dreams is greater than the maximum level established for calculation",
+        "dreamLevelLessThanOrEqual": "Dream level is less than or equal to current level",
+        "rateTooLow": "The rate is too low"
       }
     }
   }

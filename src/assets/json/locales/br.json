@@ -42,6 +42,15 @@
         "coupons": "Cupons",
         "emoticonsAndBackgrounds": "Emoticons e Planos de fundo",
         "friends": "Amigos"
+      },
+      "error": {
+        "invalidKey": "Forneça uma chave de API de vapor válida",
+        "invalidSteamId": "Forneça um Steam ID válido",
+        "invalidDreamLevel": "Forneça um nível dos sonhos válido",
+        "invalidRate": "Forneça uma taxa válida",
+        "dreamLevelHigherThanMaximumLevel": "O nível dos sonhos é maior que o nível máximo estabelecido para cálculo",
+        "dreamLevelLessThanOrEqual": "O nível dos sonhos é menor ou igual ao nível atual",
+        "rateTooLow": "A taxa é muito baixa"
       }
     }
   }

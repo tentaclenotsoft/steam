@@ -16,6 +16,7 @@ import Layout from '@components/Layout'
 import Loader from '@components/Loader'
 import Progress from '@components/Progress'
 import SteamLevels from '@components/SteamLevels'
+import Toast, { useOpenToast, useToastContent } from '@components/Toast'
 import Tooltip from '@components/Tooltip'
 import { ILevel, ILevelSettings } from '@interfaces'
 import { createApiRoute, numberFormatter, percentage } from '@utils'
@@ -50,6 +51,8 @@ export default function Level () {
   const [loading, setLoading] = useState(false)
   const [inputType, setInputType] = useState('')
   const [inputValueInvalid, setInputValueInvalid] = useState('')
+  const [openToast, setOpenToast] = useOpenToast()
+  const [toastContent, setToastContent] = useToastContent()
 
   const mergeSettings = (object: { [key: string]: string }): ILevelSettings =>
     Object.assign({}, settings, object)
@@ -99,7 +102,10 @@ export default function Level () {
       setLoading(false)
 
       if (data.message) {
-        return console.log('Error: ' + data.message)
+        setToastContent({ title: 'Error :(', message: t(`error.${data.code}`) })
+        setOpenToast(true)
+
+        return false
       }
 
       setXpOwnedAtCurrentLevel(data.xp - data.xp_needed_to_current_level)
@@ -301,6 +307,12 @@ export default function Level () {
               </div>
             </div>
           )}
+          <Toast
+            open={openToast}
+            setOpen={setOpenToast}
+            title={toastContent.title}
+            message={toastContent.message}
+          />
         </div>
       </div>
     </div>

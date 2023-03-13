@@ -13,5 +13,5 @@ module.exports = {
   variants: {
     extend: {}
   },
-  plugins: [require('tailwindcss-radix')()]
+  plugins: [require('tailwindcss-animate'), require('tailwindcss-radix')()]
 }

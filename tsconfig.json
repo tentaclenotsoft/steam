@@ -18,6 +18,7 @@
     "paths": {
       "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
+      "@hooks/*": ["hooks/*"],
       "@interfaces": ["interfaces"],
       "@interfaces/*": ["interfaces/*"],
       "@utils": ["utils"],
